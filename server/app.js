@@ -1,15 +1,27 @@
 var express = require('express');
 var db = require('./db');
+var passport = require('passport');
 
 // Middleware
 var morgan = require('morgan');
 var parser = require('body-parser');
+server.use(session({
+  secret: 'hackyhackifiers',
+  resave: false,
+  saveUninitialized: true
+}));
+server.use(passport.initialize());
+server.use(passport.session());
 
 // Router
 
 
 var app = express();
 
+// configure passport
+// passport.use(new LocalStrategy(User.authenticate()));
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
 
 // Set what we are listening on.
 app.set('port', 3000);
