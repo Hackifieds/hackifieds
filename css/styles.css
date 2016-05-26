@@ -1,3 +1,23 @@
 body {
   background-image: url("../assets/background.jpg")
 }
+
+.header {
+  position: fixed;
+}
+.heading {
+  font-size: 150px;
+  color: #5DADE2;
+}
+
+.tag-line {
+  font-size: 40px;
+  color: #3385D6;
+}
+
+.credit {
+  position: absolute;
+  left: 800;
+  top: 1200;
+  font-size: 8px;
+}
