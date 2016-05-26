@@ -1,10 +1,15 @@
+// node dependencies
 var express = require('express');
-var db = require('./db');
 var passport = require('passport');
-
-// Middleware
 var morgan = require('morgan');
 var parser = require('body-parser');
+
+// custom dependencies
+var db = require('../db/Listings.js');
+var db = require('../db/Users.js');
+var db = require('../db/Categories.js');
+
+// use middleware
 server.use(session({
   secret: 'hackyhackifiers',
   resave: false,
