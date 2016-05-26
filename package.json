@@ -10,7 +10,7 @@
   },
   "scripts": {
     "postinstall": "curl -s https://raw.githubusercontent.com/hackreactor-labs/pomander/master/bin/install | bash",
-    "start": "nodemon --ignore node_modules ./server/server.js",
+    "start": "nodemon --ignore node_modules ./server/app.js",
     "test": "node shortly.js & mocha --bail --reporter nyan test/ServerSpec.js",
     "lint": "eslint ./"
   },
