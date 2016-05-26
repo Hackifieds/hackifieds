@@ -4,19 +4,24 @@ body {
 
 .header {
   position: fixed;
+  top: 0px;
+  left: 550px;
+  text-align: -webkit-right;
 }
 .heading {
   font-size: 150px;
   color: #5DADE2;
+  margin-right: 20px;
 }
 
 .tag-line {
   font-size: 40px;
   color: #3385D6;
+  margin-right: 20px;
 }
 
 .credit {
-  position: absolute;
+  position: relative;
   left: 800;
   top: 1200;
   font-size: 8px;
