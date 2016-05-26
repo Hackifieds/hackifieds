@@ -1,5 +1,5 @@
 let ajax = require('./lib/helpers.js');
-let window.listing = {
+let listing = {
   date: '26 May 2016',
   title: 'Room to let in apartment centrally located',
   description: 'Clean room located in heart of Tenderloin, 10 minute walk to HR',
@@ -8,6 +8,6 @@ let window.listing = {
 };
 
 ReactDOM.render(
-  <Listing listing={window.listing}/>,
+  <Listing listing={listing}/>,
   document.getElementById('app')
 );
