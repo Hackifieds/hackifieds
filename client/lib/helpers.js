@@ -1,6 +1,6 @@
 
 let helpers = {
-  get: () => {
+  ajaxGet: () => {
     $.ajax({
       url: '',
       method: 'GET',
@@ -10,7 +10,7 @@ let helpers = {
       }
     });
   },
-  post: (data) => {
+  ajaxPost: (data) => {
     $.ajax({
       url: '',
       method: 'POST',
