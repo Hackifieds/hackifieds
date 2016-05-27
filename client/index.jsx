@@ -1,3 +1,5 @@
+import Listing from './components/listing.jsx';
+
 // let ajax = require('./lib/helpers.js');
 let listing = {
   date: '26 May 2016',

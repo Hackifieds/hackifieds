@@ -11,6 +11,7 @@ Thumbs.db
 ._*
 node_modules/
 compiled/
+client/dist/
 
 # Floobits
 .floo
