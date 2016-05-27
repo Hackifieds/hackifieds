@@ -1,29 +1,29 @@
 // node dependencies
 var express = require('express');
-
-var db = require('./db');
+var session = require('express-session');
 var passport = require('passport');
 var morgan = require('morgan');
 var parser = require('body-parser');
 
 // custom dependencies
-var db = require('../db/Listings.js');
-var db = require('../db/Users.js');
-var db = require('../db/Categories.js');
+var db = require('../db/db.js');
+// var db = require('../db/Listings.js');
+// var db = require('../db/Users.js');
+// var db = require('../db/Categories.js');
+
+var app = express();
 
 // use middleware
-server.use(session({
+app.use(session({
   secret: 'hackyhackifiers',
   resave: false,
   saveUninitialized: true
 }));
-server.use(passport.initialize());
-server.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Router
 
-
-var app = express();
 
 // configure passport
 // passport.use(new LocalStrategy(User.authenticate()));
