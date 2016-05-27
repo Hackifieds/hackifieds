@@ -1,5 +1,7 @@
 // node dependencies
 var express = require('express');
+
+var db = require('./db');
 var passport = require('passport');
 var morgan = require('morgan');
 var parser = require('body-parser');
