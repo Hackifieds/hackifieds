@@ -1,4 +1,4 @@
-let ajax = require('./lib/helpers.js');
+// let ajax = require('./lib/helpers.js');
 let listing = {
   date: '26 May 2016',
   title: 'Room to let in apartment centrally located',

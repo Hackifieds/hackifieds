@@ -1,6 +1,6 @@
 
 let helpers = {
-  get() => {
+  get: () => {
     $.ajax({
       url: '',
       method: 'GET',
@@ -8,9 +8,9 @@ let helpers = {
         console.log('Success', data);
         window.listing = JSON.parse(data);
       }
-    })
+    });
   },
-  post(data) => {
+  post: (data) => {
     $.ajax({
       url: '',
       method: 'POST',
