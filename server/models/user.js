@@ -1,8 +1,8 @@
 var db = require('../../db/db');
 var Listing = require('./listing');
 
-var User = db.define('users', {
-  'userId': { type: Sequelize.INTEGER, allowNull: false, primaryKey: true },
+var User = db.define('user', {
+  'userId': { type: Sequelize.INTEGER, primaryKey: true },
   'username': { type: Sequelize.STRING(100), allowNull: false },
   'firstName': { type: Sequelize.STRING(100), allowNull: false },
   'lastName': { type: Sequelize.STRING(100), allowNull: false },
