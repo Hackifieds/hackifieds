@@ -7,3 +7,5 @@ let Listing = (props) => (
     <p>{props.listing.location}</p>
   </div>
 );
+
+export default Listing;

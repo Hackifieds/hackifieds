@@ -7,7 +7,7 @@ var parser = require('body-parser');
 
 // custom dependencies
 var db = require('../db/db');
-var db = require('../db/listing.js');
+//var db = require('../db/listing.js');
 // var db = require('../db/Users.js');
 // var db = require('../db/Categories.js');
 
