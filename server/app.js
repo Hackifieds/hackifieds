@@ -3,7 +3,7 @@ var express = require('express');
 var session = require('express-session');
 var passport = require('passport');
 var morgan = require('morgan');
-var parser = require('body-parser');
+var bodyParser = require('body-parser');
 
 // custom dependencies
 var db = require('../db/db');
@@ -13,36 +13,65 @@ var db = require('../db/db');
 
 var app = express();
 
-// use middleware
-app.use(session({
-  secret: 'hackyhackifiers',
-  resave: false,
-  saveUninitialized: true
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-
-// Router
+var listings = {};
+var counter = 0;
 
 
+//------------------------------------------
+// // use middleware
+// app.use(session({
+//   secret: 'hackyhackifiers',
+//   resave: false,
+//   saveUninitialized: true
+// }));
+// app.use(passport.initialize());
+// app.use(passport.session());
 // configure passport
 // passport.use(new LocalStrategy(User.authenticate()));
 // passport.serializeUser(User.serializeUser());
 // passport.deserializeUser(User.deserializeUser());
 
-// Set what we are listening on.
-app.set('port', 3000);
-
+// parse application/json
+app.use(bodyParser.json());
 // Logging and parsing
 app.use(morgan('dev'));
-app.use(parser.json());
 
 // Set up and use our routes
 // app.use('/', router);
 // var router = require('./routes.js');
 // Serve the client files
 
-app.use(express.static(__dirname + '/../client'));
+//------------------------------------------
+
+// Router
+app.get('/*', function(req, res) {
+  debugger;
+  console.log(req);
+  var data = {
+    date: '26 Jan 2016',
+    title: 'House to let in apartment not centrally located',
+    description: 'I like cheese',
+    location: 'Pacific Heights',
+    price: '$2,500pm'
+  };
+
+  res.sendStatus(200).send(data);
+});
+
+app.post('/api/listings', function(req, res) {
+  debugger;
+  console.log(req.body);
+  listings[++counter] = req.body;
+  console.log(listings);
+
+  res.sendStatus(200).send(counter);
+});
+
+app.use (express.static(__dirname + '/../client'));
+
+// Set what we are listening on.
+app.set('port', 3000);
+
 
 // If we are being run directly, run the server.
 if (!module.parent) {
