@@ -3,10 +3,13 @@ var ajaxGet = () => {
   $.ajax({
     url: '/api/listings',
     method: 'GET',
+    contentType: 'application/json',
     success: function(data) {
+      console.log('hi');
       console.log('GET success', data);
     },
     error: function(a, b, c, d) {
+      console.log('ola');
       console.log(a);
       console.log(b);
       console.log(c);
@@ -18,14 +21,14 @@ var ajaxGet = () => {
 var ajaxPost = () => {
   //placeholder - will be an input to the ajax request
 
-  let data = {
-    date: '26 May 2016' + Math.floor(Math.random() * 100),
-    title: 'Room to let in apartment centrally located',
-    description: 'Clean room located in heart of Tenderloin, 10 minute walk to HR',
-    location: 'Tenderloin',
-    price: '$' + Math.floor(Math.random() * 2000) + 'pm'
+  var data = {
+    date: Math.floor(Math.random() * 10),
+    title: Math.floor(Math.random() * 100),
+    description: Math.floor(Math.random() * 1000),
+    location: Math.floor(Math.random() * 10000),
+    price: Math.floor(Math.random() * 100000)
   };
-
+  console.log(JSON.stringify(data));
   $.ajax({
     url: '/api/listings',
     method: 'POST',

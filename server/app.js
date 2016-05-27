@@ -13,9 +13,14 @@ var db = require('../db/db');
 
 var app = express();
 
-var listings = {};
+var listings = [{
+  date: '26 Jan 2016',
+  title: 'House to let in apartment not centrally located',
+  description: 'I like cheese',
+  location: 'Pacific Heights',
+  price: '$2,500pm'
+}];
 var counter = 0;
-
 
 //------------------------------------------
 // // use middleware
@@ -40,43 +45,36 @@ app.use(morgan('dev'));
 // app.use('/', router);
 // var router = require('./routes.js');
 // Serve the client files
+// app.use (express.static(__dirname + '/../client'));
+app.use (express.static('./client'));
 
 //------------------------------------------
 
 // Router
-app.get('/*', function(req, res) {
-  debugger;
-  console.log(req);
-  var data = {
-    date: '26 Jan 2016',
-    title: 'House to let in apartment not centrally located',
-    description: 'I like cheese',
-    location: 'Pacific Heights',
-    price: '$2,500pm'
-  };
+app.get('/api/listings', function(req, res) {
+  // console.log(req);
 
-  res.sendStatus(200).send(data);
+  res.status(200).send(listings);
 });
 
 app.post('/api/listings', function(req, res) {
-  debugger;
-  console.log(req.body);
-  listings[++counter] = req.body;
-  console.log(listings);
+  console.log('hi');
+  console.log(req);
+  listings.push(req.body);
+  // console.log(listings);
 
-  res.sendStatus(200).send(counter);
+  res.status(200).send('' + listings.length);
 });
 
-app.use (express.static(__dirname + '/../client'));
 
 // Set what we are listening on.
-app.set('port', 3000);
+app.listen(3000);
 
 
-// If we are being run directly, run the server.
-if (!module.parent) {
-  app.listen(app.get('port'));
-  console.log('Listening on', app.get('port'));
-}
+// // If we are being run directly, run the server.
+// if (!module.parent) {
+//   app.listen(app.get('port'));
+//   console.log('Listening on', app.get('port'));
+// }
 
 module.exports.app = app;
