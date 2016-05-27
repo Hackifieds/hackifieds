@@ -4,7 +4,7 @@ var Sequelize = require('sequelize');
 // custom dependencies
 var User = require('./user');
 var Category = require('./category');
-var db = require('./db');
+var db = require('../../db/db');
 
 var Listing = db.define('listing', {
   listingId: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
