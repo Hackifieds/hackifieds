@@ -1,3 +1,4 @@
+var Sequelize = require('sequelize');
 var db = require('../../db/db');
 var Listing = require('./listing');
 
@@ -10,7 +11,7 @@ var User = db.define('user', {
   'phone': Sequelize.STRING(100),
   'school': { type: Sequelize.STRING(100), allowNull: false },
   'cohort': { type: Sequelize.STRING(100), allowNull: false },
-}, {timestamps: true});
+});
 
 User.hasMany(Listing);
 User.sync();
