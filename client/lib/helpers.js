@@ -1,7 +1,6 @@
 var ajaxGet = () => {
   console.log('called');
   $.ajax({
-    hostname: 'http://localhost:3000/client',
     url: '/api/listings',
     method: 'GET',
     success: function(data) {
