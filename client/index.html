@@ -5,8 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Hackifieds</title>
   <link rel="stylesheet" href="css/styles.css">
+  <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.js"></script>
+  <script src="./lib/helpers.js"></script>
 </head>
 <body>
   <header id="header" class="header">
@@ -14,6 +16,12 @@
     <div class="tag-line">rent let buy sell hack</div>
   </header><!-- /header -->
   <div id="app"></div>
+  <div>
+    <button onclick="ajaxGet()">GET</button>
+  </div>
+  <div>
+    <button onclick="ajaxPost()">POST</button>
+  </div>
   <footer>
     <a class="credit" href="http://www.freepik.com/free-vector/wrinkled-paper-texture_851248.htm"></a>
   </footer>
