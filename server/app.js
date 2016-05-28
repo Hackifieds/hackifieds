@@ -59,9 +59,9 @@ app.get('/api/listings', function(req, res) {
 
 app.post('/api/listings', function(req, res) {
   console.log('hi');
-  console.log(req);
+  //console.log(req);
   listings.push(req.body);
-  // console.log(listings);
+  console.log(listings);
 
   res.status(200).send('' + listings.length);
 });
