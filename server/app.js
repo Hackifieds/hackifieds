@@ -14,13 +14,22 @@ var listingsCtrl = require('./controllers/listings-controller.js');
 
 var app = express();
 
-var listings = [{
-  date: '26 Jan 2016',
-  title: 'House to let in apartment not centrally located',
-  description: 'I like cheese',
-  location: 'Pacific Heights',
-  price: '$2,500pm'
-}];
+var listings = [
+  {
+    createdAt: '26 Jan 2016',
+    title: 'House to let in apartment not centrally located',
+    description: 'I like cheese',
+    location: 'Pacific Heights',
+    price: '$2,500pm'
+  },
+  {
+    createdAt: '30 May 2016',
+    title: 'Crappy room in Russian Hill',
+    description: 'It\'s the worst.',
+    location: 'Russian Hill',
+    price: '$1,400'
+  }
+];
 var counter = 0;
 
 //------------------------------------------
@@ -54,14 +63,11 @@ app.use (express.static('./client'));
 // Routing - chain GET/POST requests for specified route
 app.route('/api/listings')
   .get(function(req, res) {
-    console.log('Hit GET endpoint /api/listings');
     listingsCtrl.getAll(function(statusCode, results) {
       res.status(statusCode).send(results);
     });
   })
   .post(function(req, res) {
-    console.log('Hit POST endpoint /api/listings');
-    console.log("==================================================", req, "\n======================================================");
     listingsCtrl.addOne(req.body, function(statusCode, results) {
       res.status(statusCode).send(results);
     });
@@ -72,3 +78,4 @@ app.route('/api/listings')
 app.listen(3000);
 
 module.exports.app = app;
+
