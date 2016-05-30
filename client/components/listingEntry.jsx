@@ -1,9 +1,9 @@
 let ListingEntry = props => (
   <div>
-    <span class="listingDate"> {props.listing.date} | </span>
-    <span class="listingPrice"> {props.listing.price} | </span>
-    <span class="listingLocation"> {props.listing.location} | </span>
-    <span class="listingTitle"> {props.listing.title} </span>
+    <span class="listing-date"> {props.listing.createdAt} | </span>
+    <span class="listing-price"> {props.listing.price} | </span>
+    <span class="listing-location"> {props.listing.location} | </span>
+    <span class="listing-title"> {props.listing.title} </span>
   </div>
 );
 
