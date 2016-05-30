@@ -61,7 +61,7 @@ app.route('/api/listings')
   })
   .post(function(req, res) {
     console.log('Hit POST endpoint /api/listings');
-    console.log(req.body);
+    console.log("==================================================", req, "\n======================================================");
     listingsCtrl.addOne(req.body, function(statusCode, results) {
       res.status(statusCode).send(results);
     });

@@ -13,6 +13,7 @@ var User = db.define('User', {
   'cohort': { type: Sequelize.STRING(100), allowNull: false },
 });
 
+//TODO: define foreign key relationship
 // User.hasMany(Listing);
 User.sync();
 

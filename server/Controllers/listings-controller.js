@@ -22,7 +22,7 @@ listings.addOne = function(listing, callback) {
   console.log('Called Listings Controller');
   Listing.create(listing)
     .then(function(listing) {
-      console.log('Listings Controller addOne', listing);
+      // console.log('Listings Controller addOne', listing);
       callback(201, listing);
     })
     .catch(function(error) {
