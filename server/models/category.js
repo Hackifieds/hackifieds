@@ -10,7 +10,7 @@ var Category = db.define('Category', {
   
 }, {timestamps: true});
 
-Category.hasMany(Listing);
+// Category.hasMany(Listing);
 Category.sync();
 
 

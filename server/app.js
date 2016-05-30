@@ -7,9 +7,9 @@ var bodyParser = require('body-parser');
 
 // custom dependencies
 var db = require('../db/db');
-//var db = require('../db/listing.js');
-// var db = require('../db/Users.js');
-// var db = require('../db/Categories.js');
+var User = require('./models/user.js');
+var Listing = require('./models/listing.js');
+var Category = require('./models/category.js');
 
 var app = express();
 
