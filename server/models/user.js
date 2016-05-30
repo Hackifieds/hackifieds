@@ -1,8 +1,8 @@
 var Sequelize = require('sequelize');
-var db = require('../../db/db');
-var Listing = require('./listing');
+var db = require('../../db/db.js');
+var Listing = require('./listing.js');
 
-var User = db.define('user', {
+var User = db.define('User', {
   'userId': { type: Sequelize.INTEGER, primaryKey: true },
   'username': { type: Sequelize.STRING(100), allowNull: false },
   'firstName': { type: Sequelize.STRING(100), allowNull: false },
@@ -13,7 +13,8 @@ var User = db.define('user', {
   'cohort': { type: Sequelize.STRING(100), allowNull: false },
 });
 
-User.hasMany(Listing);
+//TODO: define foreign key relationship
+// User.hasMany(Listing);
 User.sync();
 
 module.exports = User;

@@ -7,9 +7,10 @@ var bodyParser = require('body-parser');
 
 // custom dependencies
 var db = require('../db/db');
-//var db = require('../db/listing.js');
-// var db = require('../db/Users.js');
-// var db = require('../db/Categories.js');
+var User = require('./models/user.js');
+var Listing = require('./models/listing.js');
+var Category = require('./models/category.js');
+var listingsCtrl = require('./controllers/listings-controller.js');
 
 var app = express();
 
@@ -50,31 +51,24 @@ app.use (express.static('./client'));
 
 //------------------------------------------
 
-// Router
-app.get('/api/listings', function(req, res) {
-  // console.log(req);
-
-  res.status(200).send(listings);
-});
-
-app.post('/api/listings', function(req, res) {
-  console.log('hi');
-  //console.log(req);
-  listings.push(req.body);
-  console.log(listings);
-
-  res.status(200).send('' + listings.length);
-});
+// Routing - chain GET/POST requests for specified route
+app.route('/api/listings')
+  .get(function(req, res) {
+    console.log('Hit GET endpoint /api/listings');
+    listingsCtrl.getAll(function(statusCode, results) {
+      res.status(statusCode).send(results);
+    });
+  })
+  .post(function(req, res) {
+    console.log('Hit POST endpoint /api/listings');
+    console.log("==================================================", req, "\n======================================================");
+    listingsCtrl.addOne(req.body, function(statusCode, results) {
+      res.status(statusCode).send(results);
+    });
+  });
 
 
 // Set what we are listening on.
 app.listen(3000);
-
-
-// // If we are being run directly, run the server.
-// if (!module.parent) {
-//   app.listen(app.get('port'));
-//   console.log('Listening on', app.get('port'));
-// }
 
 module.exports.app = app;
