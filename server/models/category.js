@@ -7,6 +7,7 @@ var Category = db.define('Category', {
   'categoryName': {type: Sequelize.STRING(25), allowNull: false}
 }, {timestamps: true});
 
+//TODO: define foreign key relationship
 // Category.hasMany(Listing);
 Category.sync();
 

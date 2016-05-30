@@ -60,10 +60,11 @@ app.route('/api/listings')
     });
   })
   .post(function(req, res) {
-    listings.push(req.body);
-    console.log(listings);
-
-    res.status(200).send('' + listings.length);
+    console.log('Hit POST endpoint /api/listings');
+    console.log(req.body);
+    listingsCtrl.addOne(req.body, function(statusCode, results) {
+      res.status(statusCode).send(results);
+    });
   });
 
 

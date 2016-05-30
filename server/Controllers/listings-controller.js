@@ -18,12 +18,12 @@ listings.getAll = function(callback) {
 };
 
 //Controller method - add a listings to DB
-listings.addOne = function(callback) {
+listings.addOne = function(listing, callback) {
   console.log('Called Listings Controller');
-  Listing.findAll()
-    .then(function(listings) {
-      console.log('Listings Controller getALL', listings);
-      callback(200, listings);
+  Listing.create(listing)
+    .then(function(listing) {
+      console.log('Listings Controller addOne', listing);
+      callback(201, listing);
     })
     .catch(function(error) {
       console.error(error);

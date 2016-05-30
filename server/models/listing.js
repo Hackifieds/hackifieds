@@ -14,6 +14,8 @@ var Listing = db.define('Listing', {
   price: { type: Sequelize.DECIMAL(10, 2) },
   startDate: { type: Sequelize.DATE, defaultValue: Sequelize.NOW },
   endDate: { type: Sequelize.DATE }
+
+  //TODO: specify foreign key relationships
   // userId: {
   //   type: Sequelize.INTEGER,
   //   references: {
@@ -30,6 +32,7 @@ var Listing = db.define('Listing', {
   // }
 });
 
+//TODO: define foreign key relationship
 // Listing.belongsTo(User);
 // Listing.belongsTo(Category);
 
