@@ -1,19 +1,17 @@
 var ajaxGet = () => {
-  console.log('called');
+  console.log('Client GET called');
   $.ajax({
     url: '/api/listings',
     method: 'GET',
     contentType: 'application/json',
     success: function(data) {
-      console.log('hi');
-      console.log('GET success', data);
+      console.log('Client GET success', data);
     },
-    error: function(a, b, c, d) {
-      console.log('ola');
-      console.log(a);
-      console.log(b);
-      console.log(c);
-      console.log(d);
+    error: function error(xhr, ajaxOptions, thrownException) {
+      console.log('Client GET error');      
+      console.log('XHR: ', xhr);
+      console.log('ajaxOptions: ', ajaxOptions);
+      console.log('Exception: ', thrownException);
     }
   });
 };
