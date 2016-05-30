@@ -70,11 +70,4 @@ app.post('/api/listings', function(req, res) {
 // Set what we are listening on.
 app.listen(3000);
 
-
-// // If we are being run directly, run the server.
-// if (!module.parent) {
-//   app.listen(app.get('port'));
-//   console.log('Listening on', app.get('port'));
-// }
-
 module.exports.app = app;
