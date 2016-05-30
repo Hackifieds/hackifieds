@@ -52,7 +52,7 @@ app.use (express.static('./client'));
 
 // Router
 app.get('/api/listings', function(req, res) {
-  // console.log(req);
+  console.log(req);
 
   res.status(200).send(listings);
 });
