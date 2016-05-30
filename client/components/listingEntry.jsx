@@ -1,12 +1,9 @@
 let ListingEntry = props => (
   <div>
-    <p>
-      <span> {props.listing.date} / </span>
-      <span> {props.listing.location} / </span>
-      <span> {props.listing.price}</span>
-    </p>
-    <p>{props.listing.title}</p>
-    <p>{props.listing.description}</p>
+    <span class="listingDate"> {props.listing.date} | </span>
+    <span class="listingPrice"> {props.listing.price} | </span>
+    <span class="listingLocation"> {props.listing.location} | </span>
+    <span class="listingTitle"> {props.listing.title} </span>
   </div>
 );
 
