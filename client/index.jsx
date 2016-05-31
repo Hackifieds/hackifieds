@@ -1,6 +1,5 @@
-import Listings from './components/listings.jsx';
+import App from './components/app.jsx';
 
-// let ajax = require('./lib/helpers.js');
 let listingArr = [
   {
     createdAt: '26 May 2016',
@@ -19,7 +18,7 @@ let listingArr = [
 ];
 
 ReactDOM.render(
-  <Listings listings={listingArr}/>,
+  <App listings={listingArr}/>,
   document.getElementById('app')
 );
 
