@@ -1,4 +1,6 @@
 import App from './components/app.jsx';
+import Listings from './components/listings.jsx';
+import Filter from './components/filter.jsx';
 
 let listings;
 
@@ -6,7 +8,7 @@ ajaxGet(function(data) {
   listings = data;
 
   ReactDOM.render(
-    <Listings listings={listings}/>,
+    <Filter listings={listings}/>,
     document.getElementById('app')
   );
 });

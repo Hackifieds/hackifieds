@@ -22,7 +22,7 @@ let ajaxPost = () => {
   let mock = {
     title: 'Title',
     description: 'Description',
-    location: 'Location',
+    location: 'Location2',
     price: Math.floor(Math.random() * 2000),
     startDate: Date.now(),
     endDate: Date.now(),
