@@ -12,6 +12,7 @@ Thumbs.db
 node_modules/
 compiled/
 client/dist/
+npm-debug.log
 
 # Floobits
 .floo
