@@ -1,4 +1,4 @@
-let ajaxGet = (callback) => {
+let getListings = callback => {
   $.ajax({
     url: '/api/listings',
     method: 'GET',
@@ -8,7 +8,7 @@ let ajaxGet = (callback) => {
       callback(data);
     },
     error: (xhr, ajaxOptions, thrownException) => {
-      console.log('Client GET error');      
+      console.log('Client GET error');
       console.log('XHR: ', xhr);
       console.log('ajaxOptions: ', ajaxOptions);
       console.log('Exception: ', thrownException);
@@ -16,7 +16,7 @@ let ajaxGet = (callback) => {
   });
 };
 
-let ajaxPost = () => {
+let postListing = () => {
   //placeholder - will be an input to the ajax request
 
   let mock = {
@@ -38,10 +38,13 @@ let ajaxPost = () => {
       console.log('POST success', data);
     },
     error: (xhr, ajaxOptions, thrownException) => {
-      console.log('Client POST error');      
+      console.log('Client POST error');
       console.log('XHR: ', xhr);
       console.log('ajaxOptions: ', ajaxOptions);
       console.log('Exception: ', thrownException);
-    }    
+    }
   });
 };
+
+export default { getListings, postListing };
+

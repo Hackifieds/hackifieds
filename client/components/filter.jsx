@@ -1,11 +1,9 @@
-  //Basic Stateless Functional Component
-
-let Filter = (props) => {
+let Filter = props => {
   let locations = {};
   let filterLocs = [];
 
-  props.listings.forEach(listing => {
-    if(!locations[listing.location]) {
+  props.listings.forEach( listing => {
+    if( !locations[listing.location] ) {
       locations[listing.location] = listing.location;
       filterLocs.push(listing.location);
     }
@@ -14,12 +12,11 @@ let Filter = (props) => {
   filterLocs.sort();
 
   return (
-    <div> 
-      {
-        filterLocs.map(loc => <div class='filter-item'>{ loc }</div>)
-      }
+    <div>
+      { filterLocs.map( loc => <div class='filter-item'>Filter: {loc}</div> ) }
     </div>
   );
 };
 
 export default Filter;
+
