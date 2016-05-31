@@ -1,13 +1,13 @@
-var ajaxGet = () => {
-  console.log('Client GET called');
+let ajaxGet = (callback) => {
   $.ajax({
     url: '/api/listings',
     method: 'GET',
     contentType: 'application/json',
-    success: function(data) {
-      console.log('Client GET success', data);
+    success: data => {
+      console.log('GET success', data);
+      callback(data);
     },
-    error: function error(xhr, ajaxOptions, thrownException) {
+    error: (xhr, ajaxOptions, thrownException) => {
       console.log('Client GET error');      
       console.log('XHR: ', xhr);
       console.log('ajaxOptions: ', ajaxOptions);
@@ -16,31 +16,29 @@ var ajaxGet = () => {
   });
 };
 
-var ajaxPost = () => {
+let ajaxPost = () => {
   //placeholder - will be an input to the ajax request
 
-  var mock = {
-    title: 'Test data',
-    description: 'Test data',
-    location: 'Test data',
+  let mock = {
+    title: 'Title',
+    description: 'Description',
+    location: 'Location2',
     price: Math.floor(Math.random() * 2000),
     startDate: Date.now(),
     endDate: Date.now(),
     createdAt: Date.now(),
     updatedAt: Date.now()
   };
-  console.log(mock);
-  console.log(JSON.stringify(mock));
   $.ajax({
     url: '/api/listings',
     method: 'POST',
     contentType: 'application/json',
     data: JSON.stringify(mock),
-    success: function(data) {
+    success: data => {
       console.log('POST success', data);
     },
-    error: function error(xhr, ajaxOptions, thrownException) {
-      console.log('Client GET error');      
+    error: (xhr, ajaxOptions, thrownException) => {
+      console.log('Client POST error');      
       console.log('XHR: ', xhr);
       console.log('ajaxOptions: ', ajaxOptions);
       console.log('Exception: ', thrownException);
