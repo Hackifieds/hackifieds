@@ -1,6 +1,7 @@
 import Listings from './listings.jsx';
 import Filter from './filter.jsx';
 import helpers from '../lib/helpers.js';
+import Nav from './nav.jsx';
 
 class App extends React.Component {
 
@@ -31,6 +32,7 @@ class App extends React.Component {
   render () {
     return (
       <div>
+        <Nav />
         <Listings listings={this.state.listings}/>
         <Filter listings={this.state.listings}/>
         <button id="getButton" type="button" onClick={this.retrieveListings.bind(this)}>GET</button>
