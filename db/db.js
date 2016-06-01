@@ -82,4 +82,6 @@ db.sync()
     console.log( 'Error opening hackifieds database: ' + err );
   });
 
-module.exports = db;
+exports.User = User;
+exports.Category = Category;
+exports.Listing = Listing;
