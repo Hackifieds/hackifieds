@@ -1,11 +1,12 @@
-let Nav = props => (
+let Nav = ({handleNavClick}) => (
+
   <div className="nav">
     <nav>
-      <a>Rent</a>
-      <a>Let</a>
-      <a>Buy</a>
-      <a>Sell</a>
-      <a>Hack</a>
+      <ul>
+        <li><a onClick={() => handleNavClick('Rent')}>Rent</a></li>
+        <li><a onClick={() => handleNavClick('Buy')}>Buy</a></li>
+        <li><a onClick={() => handleNavClick('Hack')}>Hack</a></li>
+      </ul>
     </nav>
   </div>
 );

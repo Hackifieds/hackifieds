@@ -1,8 +1,9 @@
-let getListings = callback => {
+let getListings = (category, callback) => {
   $.ajax({
     url: '/api/listings',
     method: 'GET',
     contentType: 'application/json',
+    data: {category: category},
     success: data => {
       console.log('GET success', data);
       callback(data);

@@ -60,7 +60,7 @@ app.use (express.static('./client'));
 // Routing - chain GET/POST requests for specified route
 app.route('/api/listings')
   .get(function(req, res) {
-    listingsCtrl.getAll(function(statusCode, results) {
+    listingsCtrl.getAll(req.query.category, function(statusCode, results) {
       res.status(statusCode).send(results);
     });
   })
