@@ -28,6 +28,7 @@ class App extends React.Component {
 
   sendListing () {
     helpers.postListing();
+    this.retrieveListings();
   }
 
   handleNavClick(value) {

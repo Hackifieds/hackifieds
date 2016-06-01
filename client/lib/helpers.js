@@ -23,7 +23,7 @@ let postListing = () => {
   let mock = {
     title: 'Title',
     description: 'Description',
-    location: 'Location2',
+    location: 'Location3',
     price: Math.floor(Math.random() * 2000),
     startDate: Date.now(),
     endDate: Date.now(),
