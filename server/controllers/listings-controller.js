@@ -1,12 +1,11 @@
-var Listing = require('../models/listing.js');
-var app = require('../../server/app.js');
+var db = require('../../db/db');
 
 var listings = {};
 
 //Controller method - retrieve all listings from DB
 listings.getAll = function(callback) {
   // Listing.findAll({ order: ['createdAt', 'DESC'] })
-  Listing.findAll()
+  db.Listing.findAll()
     .then(function(listings) {
       callback(200, listings);
     })
@@ -18,7 +17,7 @@ listings.getAll = function(callback) {
 
 //Controller method - add a listings to DB
 listings.addOne = function(listing, callback) {
-  Listing.create(listing)
+  db.Listing.create(listing)
     .then(function(listing) {
       callback(201, listing);
     })
