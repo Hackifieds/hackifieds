@@ -5,7 +5,7 @@ const ListingEntry = props => (
     <span className="listing-entry-date"> {props.listing.createdAt} | </span>
     <span className="listing-entry-price"> {props.listing.price} | </span>
     <span className="listing-entry-location"> {props.listing.location} | </span>
-    <span className="listing-entry-title" listingId={props.listing.listingId} onClick={props.handleListingEntryClick}> {props.listing.title} | </span>
+    <span className="listing-entry-title" id={props.listing.listingId} onClick={props.handleListingEntryClick}> {props.listing.title} | </span>
     
   </div>
 );
