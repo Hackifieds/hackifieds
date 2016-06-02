@@ -1,6 +1,6 @@
 import ListingEntry from './listingEntry.jsx';
 
-let Listings = props => (
+const Listings = props => (
   <div className="listings">
     { props.listings.map( listing => 
       if (props.state.activeListing) {

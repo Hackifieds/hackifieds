@@ -1,4 +1,5 @@
 import Listings from './listings.jsx';
+import ListingInfo from './listingInfo.jsx';
 import Filter from './filter.jsx';
 import helpers from '../lib/helpers.js';
 import Nav from './nav.jsx';

@@ -1,11 +1,13 @@
-let ListingEntry = props => (
+import ListingInfo from './listingInfo.jsx';
+
+const ListingEntry = props => (
   <div>
-    <div class="listing-date"> {props.listing.createdAt} | </div>
-    <div class="listing-price"> {props.listing.price} | </div>
-    <div class="listing-location"> {props.listing.location} | </div>
-    <div<ListingInfo class="listing-title" listing={props.listing.title}/> </div>
+    <span className="listing-date"> {props.listing.createdAt} | </span>
+    <span className="listing-price"> {props.listing.price} | </span>
+    <span className="listing-location"> {props.listing.location} | </span>
+    <span className="listing-title"> {props.listing.title} | </span>
+    
   </div>
 );
 
 export default ListingEntry;
-
