@@ -1,4 +1,4 @@
-
+//Detailed Listing Info component - shows when user clicks a specific ListingEntry
 const ListingInfo = props => (
   <div className='listing-info'>
     <div className="listing-info-date"> {props.listing.createdAt} | </div>
