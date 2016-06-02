@@ -45,16 +45,12 @@ class App extends React.Component {
     this.setState({
       activeListing: Number(event.currentTarget.id)
     });
-
-    // this.retrieveListings(this.state.navCategory);
   }
 
   handleListingInfoClick(event) {
     this.setState({
       activeListing: null
     });
-
-    // this.retrieveListings(this.state.navCategory);
   }
 
   render () {
