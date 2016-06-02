@@ -42,13 +42,19 @@ class App extends React.Component {
   }
   
   handleListingEntryClick(event) {
-    console.log(event.currentTarget.id);
     this.setState({
-      activeListing: event.currentTarget.id
+      activeListing: Number(event.currentTarget.id)
     });
 
     this.retrieveListings(this.state.navCategory);
-    this.render();
+  }
+
+  handleListingInfoClick(event) {
+    this.setState({
+      activeListing: null
+    });
+
+    this.retrieveListings(this.state.navCategory);
   }
 
   render () {
@@ -56,6 +62,7 @@ class App extends React.Component {
       <div className='app'>
         <Nav handleNavClick={this.handleNavClick.bind(this)}/>
         <Listings handleListingEntryClick={this.handleListingEntryClick.bind(this)} 
+                  handleListingInfoClick={this.handleListingInfoClick.bind(this)}
                   activeListing={this.state.activeListing}
                   listings={this.state.listings}/>
         <Filter listings={this.state.listings}/>

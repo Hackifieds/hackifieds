@@ -36,8 +36,10 @@ nav li {
 
 /* Layout */
 
-.listings {
 
+.filter {
+  width: 20%;
+  border: solid 1px black;
 }
 
 .filter-item {
@@ -45,19 +47,30 @@ nav li {
 }
 
 .filter-count {
+  margin-left: 5px;
+  font-weight: bold;
+  font-style: italic;
 
 }
+.listings {
+  width: 80%;
+  border: solid 1px black;
+}
 
-.listing-date {
+.listing-entry {
+  width: 80%;
+}
 
+.listing-entry-date {
+  width: 5%;
 }
-.listing-price {
-  
+.listing-entry-price {
+  width: 5%;
 }
-.listing-location {
-  
+.listing-entry-location {
+  width: 5%;  
 }
-.listing-title {
-  
+.listing-entry-title {
+  text-decoration: underline;
 }
->>>>>>> Add classes to CSS styles
+
