@@ -55,6 +55,9 @@ app.use(morgan('dev'));
 // app.use (express.static(__dirname + '/../client'));
 app.use (express.static('./client'));
 app.use ('/scripts', express.static(__dirname + '/../node_modules/bootstrap/dist/'));
+app.use ('/scripts', express.static(__dirname + '/../node_modules/jquery/dist/'));
+app.use ('/scripts', express.static(__dirname + '/../node_modules/react/dist/'));
+app.use ('/scripts', express.static(__dirname + '/../node_modules/react-dom/dist/'));
 
 //------------------------------------------
 
