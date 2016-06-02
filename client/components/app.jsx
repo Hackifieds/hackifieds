@@ -46,7 +46,7 @@ class App extends React.Component {
       activeListing: Number(event.currentTarget.id)
     });
 
-    this.retrieveListings(this.state.navCategory);
+    // this.retrieveListings(this.state.navCategory);
   }
 
   handleListingInfoClick(event) {
@@ -54,7 +54,7 @@ class App extends React.Component {
       activeListing: null
     });
 
-    this.retrieveListings(this.state.navCategory);
+    // this.retrieveListings(this.state.navCategory);
   }
 
   render () {
