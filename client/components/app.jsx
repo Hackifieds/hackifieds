@@ -10,7 +10,9 @@ class App extends React.Component {
 
     this.state = {
       listings: [],
-      navCategory: 'Rent'
+      navCategory: 'Rent',
+      activeFilter: 'All',
+      activeListing: null
     };
   }
 
@@ -36,13 +38,18 @@ class App extends React.Component {
       navCategory: value
     });
     this.retrieveListings(value);
+
+  handleListingEntryClick(event) {
+    if (event.currentTarget.class === 'listing-title') {
+
+    }
   }
 
   render () {
     return (
       <div>
         <Nav handleNavClick={this.handleNavClick.bind(this)}/>
-        <Listings listings={this.state.listings}/>
+        <Listings handleListingEntryClick={this.handleListingEntryClick.bind(this)} listings={this.state.listings}/>
         <Filter listings={this.state.listings}/>
         <button id="getButton" type="button" onClick={this.retrieveListings.bind(this)}>GET</button>
         <button id="postButton" type="button" onClick={this.sendListing.bind(this)}>POST</button>
