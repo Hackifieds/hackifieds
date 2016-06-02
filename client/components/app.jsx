@@ -30,7 +30,6 @@ class App extends React.Component {
   }
 
   sendListing () {
-<<<<<<< a42f904daaf22869a7f32a6a4ccc03bf5acb948e
     helpers.postListing(this.state.navCategory);
     this.retrieveListings(this.state.navCategory);
   }
@@ -52,10 +51,6 @@ class App extends React.Component {
     this.setState({
       activeListing: null
     });
-=======
-    helpers.postListing();
-    this.retrieveListings();
->>>>>>> Added retrieveListings() function call to postListing function - refresh view.
   }
 
   render () {
