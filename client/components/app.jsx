@@ -43,15 +43,20 @@ class App extends React.Component {
   
   handleListingEntryClick(event) {
     if (event.currentTarget.class === 'listing-title') {
-
+      this.setState({
+        activeListing: event.currentTarget.value
+      });
     }
+    this.retrieveListings(this.state.navCategory);
   }
 
   render () {
     return (
       <div>
         <Nav handleNavClick={this.handleNavClick.bind(this)}/>
-        <Listings handleListingEntryClick={this.handleListingEntryClick.bind(this)} listings={this.state.listings}/>
+        <Listings handleListingEntryClick={this.handleListingEntryClick.bind(this)} 
+                  activeListing={this.state.activeListing}
+                  listings={this.state.listings}/>
         <Filter listings={this.state.listings}/>
         <button id="getButton" type="button" onClick={this.retrieveListings.bind(this)}>GET</button>
         <button id="postButton" type="button" onClick={this.sendListing.bind(this)}>POST</button>
