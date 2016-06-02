@@ -42,8 +42,9 @@ class App extends React.Component {
   }
   
   handleListingEntryClick(event) {
+    console.log(event.currentTarget.id);
     this.setState({
-      activeListing: event.currentTarget.listingId
+      activeListing: event.currentTarget.id
     });
 
     this.retrieveListings(this.state.navCategory);
