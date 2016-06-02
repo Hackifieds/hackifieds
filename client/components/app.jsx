@@ -1,6 +1,7 @@
 import Listings from './listings.jsx';
 import Filter from './filter.jsx';
 import helpers from '../lib/helpers.js';
+import Nav from './nav.jsx';
 
 class App extends React.Component {
 
@@ -8,16 +9,17 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      listings: []
+      listings: [],
+      navCategory: 'Rent'
     };
   }
 
   componentWillMount () {
-    this.retrieveListings();
+    this.retrieveListings(this.state.navCategory);
   }
 
-  retrieveListings () {
-    helpers.getListings( data => {
+  retrieveListings (category) {
+    helpers.getListings( category, data => {
       this.setState( {
         listings: data
       })
@@ -28,9 +30,17 @@ class App extends React.Component {
     helpers.postListing();
   }
 
+  handleNavClick(value) {
+    this.setState({
+      navCategory: value
+    });
+    this.retrieveListings(value);
+  }
+
   render () {
     return (
       <div>
+        <Nav handleNavClick={this.handleNavClick.bind(this)}/>
         <Listings listings={this.state.listings}/>
         <Filter listings={this.state.listings}/>
         <button id="getButton" type="button" onClick={this.retrieveListings.bind(this)}>GET</button>

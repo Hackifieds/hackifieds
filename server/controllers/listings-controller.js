@@ -3,9 +3,14 @@ var db = require('../../db/db');
 var listings = {};
 
 //Controller method - retrieve all listings from DB
-listings.getAll = function(callback) {
+listings.getAll = function(category, callback) {
   // Listing.findAll({ order: ['createdAt', 'DESC'] })
-  db.Listing.findAll()
+  db.Listing.findAll({
+    include: [{
+      model: db.Category,
+      where: {categoryName: category}
+    }]
+  })
     .then(function(listings) {
       callback(200, listings);
     })

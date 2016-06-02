@@ -1,5 +1,6 @@
 body {
-  background-image: url("../assets/background.jpg")
+  background-image: url("../assets/background.jpg");
+  padding-top: 50px;
 }
 
 .header {
@@ -26,3 +27,11 @@ body {
   top: 1200;
   font-size: 8px;
 }
+
+/* Navigation */
+nav li {
+  display: inline-block;
+  background-color: #FFFFFF;
+}
+
+/* Layout */
