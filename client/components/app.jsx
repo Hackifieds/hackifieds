@@ -38,7 +38,8 @@ class App extends React.Component {
       navCategory: value
     });
     this.retrieveListings(value);
-
+  }
+  
   handleListingEntryClick(event) {
     if (event.currentTarget.class === 'listing-title') {
 
