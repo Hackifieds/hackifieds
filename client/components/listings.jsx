@@ -1,13 +1,11 @@
 import ListingEntry from './listingEntry.jsx';
+import ListingInfo from './listingInfo.jsx';
 
 const Listings = props => (
   <div className="listings">
     { props.listings.map( listing => 
-      if (props.state.activeListing) {
-        <ListingInfo
-      } else {
-        <ListingEntry listing={listing}/> ) }
-      }
+      (props.activeListing && props.activeListing === listing.listingId) ? <ListingInfo listing={ listing }/> : <ListingEntry handleListingEntryClick={ props.handleListingEntryClick } listing={ listing }/>)
+    }
   </div>
 );
 
