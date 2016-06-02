@@ -1,3 +1,4 @@
+
 const ListingInfo = props => (
   <div className='listing-info'>
     <div className="listing-info-date"> {props.listing.createdAt} | </div>

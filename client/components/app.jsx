@@ -1,8 +1,8 @@
+import Nav from './nav.jsx';
+import Filter from './filter.jsx';
 import Listings from './listings.jsx';
 import ListingInfo from './listingInfo.jsx';
-import Filter from './filter.jsx';
 import helpers from '../lib/helpers.js';
-import Nav from './nav.jsx';
 
 class App extends React.Component {
 
@@ -40,6 +40,12 @@ class App extends React.Component {
     });
     this.retrieveListings(value);
   }
+
+  handleFilterItemClick(event) {
+    this.setState({
+      activeFilter: event.currentTarget.id
+    });
+  }
   
   handleListingEntryClick(event) {
     this.setState({
@@ -59,9 +65,10 @@ class App extends React.Component {
         <Nav handleNavClick={this.handleNavClick.bind(this)}/>
         <Listings handleListingEntryClick={this.handleListingEntryClick.bind(this)} 
                   handleListingInfoClick={this.handleListingInfoClick.bind(this)}
+                  activeFilter={this.state.activeFilter}
                   activeListing={this.state.activeListing}
                   listings={this.state.listings}/>
-        <Filter listings={this.state.listings}/>
+        <Filter handleFilterItemClick={this.handleFilterItemClick.bind(this)} listings={this.state.listings}/>
         <button id="getButton" type="button" onClick={this.retrieveListings.bind(this)}>GET</button>
         <button id="postButton" type="button" onClick={this.sendListing.bind(this)}>POST</button>
       </div>
