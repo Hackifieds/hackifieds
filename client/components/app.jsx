@@ -42,17 +42,16 @@ class App extends React.Component {
   }
   
   handleListingEntryClick(event) {
-    if (event.currentTarget.class === 'listing-title') {
-      this.setState({
-        activeListing: event.currentTarget.value
-      });
-    }
+    this.setState({
+      activeListing: event.currentTarget.listingId
+    });
+
     this.retrieveListings(this.state.navCategory);
   }
 
   render () {
     return (
-      <div>
+      <div className='app'>
         <Nav handleNavClick={this.handleNavClick.bind(this)}/>
         <Listings handleListingEntryClick={this.handleListingEntryClick.bind(this)} 
                   activeListing={this.state.activeListing}
