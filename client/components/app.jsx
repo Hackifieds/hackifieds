@@ -69,7 +69,7 @@ class App extends React.Component {
             <Col xs={4} md={4}>
               <Filter handleFilterItemClick={this.handleFilterItemClick.bind(this)} listings={this.state.listings}/>
             </Col>
-            <Col xs={8} md={8}>
+            <Col xs={8} md={8} lg={8}>
               <Listings handleListingEntryClick={this.handleListingEntryClick.bind(this)} 
                   handleListingInfoClick={this.handleListingInfoClick.bind(this)}
                   activeFilter={this.state.activeFilter}
