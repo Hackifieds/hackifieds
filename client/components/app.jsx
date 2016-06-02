@@ -12,8 +12,10 @@ class App extends React.Component {
     this.state = {
       listings: [],
       navCategory: 'Rent',
+
       activeFilter: 'All',
       activeListing: null
+      loggedIn: false
     };
   }
 
@@ -53,6 +55,15 @@ class App extends React.Component {
     });
   }
 
+  loggedIn(){
+    this.setState({
+
+      loggedIn: true
+    });
+  }
+
+
+
   render () {
     return (
       <div className='app'>
@@ -64,6 +75,16 @@ class App extends React.Component {
         <Filter listings={this.state.listings}/>
         <button id="getButton" type="button" onClick={this.retrieveListings.bind(this)}>GET</button>
         <button id="postButton" type="button" onClick={this.sendListing.bind(this)}>POST</button>
+        <p>
+          {this.state.loggedIn ? (
+            <a href="mailto:someone@example.com?Subject=Hello%20again" >Send mail!</a>) : 
+            (
+              <div>
+                <a href="/api/auth/github/" onClick={this.loggedIn.bind(this)}>Login</a>
+              </div>
+            ) 
+          }
+        </p>
       </div>
     );
   }
