@@ -4,16 +4,22 @@ let Filter = props => {
 
   props.listings.forEach( listing => {
     if( !locations[listing.location] ) {
-      locations[listing.location] = listing.location;
+      locations[listing.location] = 0;
       filterLocs.push(listing.location);
     }
+    locations[listing.location]++;
   });
 
   filterLocs.sort();
 
   return (
-    <div>
-      { filterLocs.map( loc => <div class='filter-item'>Filter: {loc}</div> ) }
+    <div className='filter'>
+      { filterLocs.map(loc => 
+        <div>
+          <span className='filter-item'>Filter: {loc}</span>
+          <span className='filter-count'>{'(' + locations[loc] + ')'}</span>
+        </div>
+      )}
     </div>
   );
 };

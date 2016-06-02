@@ -17,19 +17,27 @@ let getListings = (category, callback) => {
   });
 };
 
-let postListing = () => {
+let postListing = (category) => {
   //placeholder - will be an input to the ajax request
-
+  let categories = {
+    Rent: 1,
+    Buy: 2,
+    Hack: 3
+  };
+  
   let mock = {
-    title: 'Title',
-    description: 'Description',
-    location: 'Location2',
+    title: 'This is an example title',
+    description: 'This is an example description',
+    location: 'Location' + Math.floor(Math.random() * 10),
     price: Math.floor(Math.random() * 2000),
     startDate: Date.now(),
     endDate: Date.now(),
     createdAt: Date.now(),
-    updatedAt: Date.now()
+    updatedAt: Date.now(),
+    userId: 3,
+    categoryId: categories[category]
   };
+
   $.ajax({
     url: '/api/listings',
     method: 'POST',

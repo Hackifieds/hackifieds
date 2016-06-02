@@ -1,4 +1,5 @@
 import Listings from './listings.jsx';
+import ListingInfo from './listingInfo.jsx';
 import Filter from './filter.jsx';
 import helpers from '../lib/helpers.js';
 import Nav from './nav.jsx';
@@ -10,7 +11,9 @@ class App extends React.Component {
 
     this.state = {
       listings: [],
-      navCategory: 'Rent'
+      navCategory: 'Rent',
+      activeFilter: 'All',
+      activeListing: null
     };
   }
 
@@ -27,7 +30,8 @@ class App extends React.Component {
   }
 
   sendListing () {
-    helpers.postListing();
+    helpers.postListing(this.state.navCategory);
+    this.retrieveListings(this.state.navCategory);
   }
 
   handleNavClick(value) {
@@ -36,12 +40,27 @@ class App extends React.Component {
     });
     this.retrieveListings(value);
   }
+  
+  handleListingEntryClick(event) {
+    this.setState({
+      activeListing: Number(event.currentTarget.id)
+    });
+  }
+
+  handleListingInfoClick(event) {
+    this.setState({
+      activeListing: null
+    });
+  }
 
   render () {
     return (
-      <div>
+      <div className='app'>
         <Nav handleNavClick={this.handleNavClick.bind(this)}/>
-        <Listings listings={this.state.listings}/>
+        <Listings handleListingEntryClick={this.handleListingEntryClick.bind(this)} 
+                  handleListingInfoClick={this.handleListingInfoClick.bind(this)}
+                  activeListing={this.state.activeListing}
+                  listings={this.state.listings}/>
         <Filter listings={this.state.listings}/>
         <button id="getButton" type="button" onClick={this.retrieveListings.bind(this)}>GET</button>
         <button id="postButton" type="button" onClick={this.sendListing.bind(this)}>POST</button>

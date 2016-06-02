@@ -35,3 +35,42 @@ nav li {
 }
 
 /* Layout */
+
+
+.filter {
+  width: 20%;
+  border: solid 1px black;
+}
+
+.filter-item {
+
+}
+
+.filter-count {
+  margin-left: 5px;
+  font-weight: bold;
+  font-style: italic;
+
+}
+.listings {
+  width: 80%;
+  border: solid 1px black;
+}
+
+.listing-entry {
+  width: 80%;
+}
+
+.listing-entry-date {
+  width: 5%;
+}
+.listing-entry-price {
+  width: 5%;
+}
+.listing-entry-location {
+  width: 5%;  
+}
+.listing-entry-title {
+  text-decoration: underline;
+}
+
