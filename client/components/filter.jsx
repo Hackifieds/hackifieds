@@ -13,7 +13,7 @@ let Filter = props => {
   filterLocs.sort();
 
   return (
-    <div>
+    <div className='filter'>
       { filterLocs.map(loc => 
         <div>
           <span className='filter-item'>Filter: {loc}</span>
