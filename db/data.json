@@ -1,0 +1,157 @@
+[
+  {
+    "categories": [
+      {
+        "categoryName": "Rent"
+      },
+      {
+        "categoryName": "Buy"
+      },
+      {
+        "categoryName": "Hack"
+      }
+    ]
+  },
+  {
+    "users": [
+      {
+        "username": "gfncodes",
+        "firstName": "Gabe",
+        "lastName": "F",
+        "email": "gfncodes@github.com",
+        "phone": "123-456-7890",
+        "school": "Hack Reactor",
+        "cohort": "43"
+      },
+      {
+        "username": "lensvelt",
+        "firstName": "Brett",
+        "lastName": "Lensvelt",
+        "email": "lensvelt@github.com",
+        "phone": "123-456-7890",
+        "school": "Hack Reactor",
+        "cohort": "43"
+      },
+      {
+        "username": "malaneti",
+        "firstName": "Mala",
+        "lastName": "Neti",
+        "email": "malaneti@github.com",
+        "phone": "123-456-7890",
+        "school": "Hack Reactor",
+        "cohort": "43"
+      },
+      {
+        "username": "aphavichitr",
+        "firstName": "Andrew",
+        "lastName": "Phavichitr",
+        "email": "aphavichitr@github.com",
+        "phone": "123-456-7890",
+        "school": "Hack Reactor",
+        "cohort": "43"
+      }
+    ]
+  },
+  {
+    "listings": [
+      {
+        "title": "Room for rent",
+        "description": "Room for rent",
+        "location": "Tenderloin",
+        "price": "1200",
+        "startDate": "2016-07-01",
+        "endDate": "2016-10-01",
+        "userId": 1,
+        "categoryId": 1
+      },
+      {
+        "title": "Couch for rent",
+        "description": "Couch for rent",
+        "location": "SOMA",
+        "price": "800",
+        "startDate": "2016-07-01",
+        "endDate": "2016-10-01",
+        "userId": 2,
+        "categoryId": 1
+      },
+      {
+        "title": "Shared room",
+        "description": "Shared room",
+        "location": "Nob Hill",
+        "price": "1000",
+        "startDate": "2016-06-01",
+        "endDate": "2016-09-01",
+        "userId": 3,
+        "categoryId": 1
+      },
+      {
+        "title": "Bicycle",
+        "description": "Bicycle",
+        "location": "Tenderloin",
+        "price": "150",
+        "startDate": "2016-06-01",
+        "endDate": "2016-09-01",
+        "userId": 4,
+        "categoryId": 2
+      },
+      {
+        "title": "Macbook",
+        "description": "Macbook",
+        "location": "SOMA",
+        "price": "850",
+        "startDate": "2016-07-01",
+        "endDate": "2016-10-01",
+        "userId": 1,
+        "categoryId": 2
+      },
+      {
+        "title": "2 bedroom apartment",
+        "description": "2 bedroom apartment",
+        "location": "South beach",
+        "price": "3000",
+        "startDate": "2016-08-06",
+        "endDate": "2016-11-06",
+        "userId": 2,
+        "categoryId": 1
+      },
+      {
+        "title": "Study group",
+        "description": "Study group",
+        "location": "SOMA",
+        "startDate": "2016-06-04",
+        "endDate": "2016-06-04",
+        "userId": 3,
+        "categoryId": 3
+      },
+      {
+        "title": "PC",
+        "description": "PC",
+        "location": "SOMA",
+        "price": "600",
+        "startDate": "2016-07-01",
+        "endDate": "2016-08-01",
+        "userId": 4,
+        "categoryId": 2
+      },
+      {
+        "title": "Hacker house",
+        "description": "Hacker house",
+        "location": "Nob Hill",
+        "price": "1300",
+        "startDate": "2016-07-01",
+        "endDate": "2016-10-01",
+        "userId": 1,
+        "categoryId": 1
+      },
+      {
+        "title": "Carpool",
+        "description": "Carpool",
+        "location": "San Jose",
+        "startDate": "2016-06-01",
+        "endDate": "2016-09-01",
+        "userId": 2,
+        "categoryId": 3
+      }
+    ]
+  }
+]
