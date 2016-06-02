@@ -7,6 +7,7 @@ const ListingInfo = props => (
     <div className="listing-info-description"> {props.listing.description} | </div>
     <div className="listing-info-email"> {props.listing.email} | </div>
     <div className="listing-info-telphone"> {props.listing.telephone} | </div>
+    <div className="listing-info-close" onClick={props.handleListingInfoClick}> X </div>
   </div>
 );
 
