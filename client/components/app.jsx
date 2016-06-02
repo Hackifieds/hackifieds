@@ -30,8 +30,8 @@ class App extends React.Component {
   }
 
   sendListing () {
-    helpers.postListing();
-    this.retrieveListings();
+    helpers.postListing(this.state.navCategory);
+    this.retrieveListings(this.state.navCategory);
   }
 
   handleNavClick(value) {
