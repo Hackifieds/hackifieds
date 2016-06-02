@@ -4,6 +4,8 @@ var session = require('express-session');
 var passport = require('passport');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
+var router = express.Router();
+var github = require('passport-github2')
 
 // custom dependencies
 var db = require('../db/db');
@@ -31,17 +33,23 @@ var counter = 0;
 
 //------------------------------------------
 // // use middleware
-// app.use(session({
-//   secret: 'hackyhackifiers',
-//   resave: false,
-//   saveUninitialized: true
-// }));
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(session({
+  secret: 'hackyhackifiers',
+  resave: false,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 // configure passport
 // passport.use(new LocalStrategy(User.authenticate()));
 // passport.serializeUser(User.serializeUser());
 // passport.deserializeUser(User.deserializeUser());
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
 
 // parse application/json
 app.use(bodyParser.json());
@@ -73,7 +81,45 @@ app.route('/api/listings')
       res.status(statusCode).send(results);
     });
   });
+//-----------------------------------------
+//setting up github Oauth
+passport.use(new github({
+    clientID: 'XXXX',
+    clientSecret: 'XXXXXXXX',
+    callbackURL: "http://127.0.0.1:3000/auth/github/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    return done(null,profile)
+     }
+));
 
+app.get('/api/auth/github',
+ 
+  passport.authenticate('github', { scope: [ 'user:email' ] }));
+
+
+
+
+app.get('/auth/github/callback', 
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  function(req, res) {
+    console.log("hi")
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
+
+
+
+app.get('/login', function(req, res, next) {
+    res.redirect('/');
+  
+  });
+
+app.get('/logout', function(req, res){
+  req.logout();
+ // res.redirect('/')
+  return res.status(200).end();
+});
 
 // Set what we are listening on.
 app.listen(3000);
