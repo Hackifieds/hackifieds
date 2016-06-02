@@ -47,6 +47,7 @@ class App extends React.Component {
     });
 
     this.retrieveListings(this.state.navCategory);
+    this.render();
   }
 
   render () {
