@@ -1,4 +1,5 @@
 let Filter = props => {
+  //Set default values for Filter component elements
   let locations = {All: 0};
   let filterLocs = ['All'];
 
