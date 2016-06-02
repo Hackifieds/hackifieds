@@ -26,9 +26,15 @@ let postListing = (category) => {
   };
   
   let mock = {
+<<<<<<< a42f904daaf22869a7f32a6a4ccc03bf5acb948e
     title: 'This is an example title',
     description: 'This is an example description',
     location: 'Location' + Math.floor(Math.random() * 10),
+=======
+    title: 'Title',
+    description: 'Description',
+    location: 'Location3',
+>>>>>>> Added retrieveListings() function call to postListing function - refresh view.
     price: Math.floor(Math.random() * 2000),
     startDate: Date.now(),
     endDate: Date.now(),
