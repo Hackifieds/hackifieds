@@ -14,7 +14,7 @@ const Listings = props => {
       {filtered.map(listing => 
         (props.activeListing && props.activeListing === listing.listingId) ? 
         <ListingInfo handleListingInfoClick = {props.handleListingInfoClick} listing={listing}/> : 
-        <ListingEntry handleListingEntryClick={props.handleListingEntryClick} listing={listing}/>)
+        <ListingEntry key={listing.listingId} handleListingEntryClick={props.handleListingEntryClick} listing={listing}/>)
       }
     </div>
   );

@@ -8,51 +8,17 @@ var bodyParser = require('body-parser');
 // custom dependencies
 var db = require('../db/db');
 var listingsCtrl = require('./controllers/listings-controller.js');
+var categoriesController = require('./controllers/categoriesController');
+var usersController = require('./controllers/usersController');
 
+// create server instance
 var app = express();
 
-var listings = [
-  {
-    createdAt: '26 Jan 2016',
-    title: 'House to let in apartment not centrally located',
-    description: 'I like cheese',
-    location: 'Pacific Heights',
-    price: '$2,500pm'
-  },
-  {
-    createdAt: '30 May 2016',
-    title: 'Crappy room in Russian Hill',
-    description: 'It\'s the worst.',
-    location: 'Russian Hill',
-    price: '$1,400'
-  }
-];
-var counter = 0;
-
-//------------------------------------------
-// // use middleware
-// app.use(session({
-//   secret: 'hackyhackifiers',
-//   resave: false,
-//   saveUninitialized: true
-// }));
-// app.use(passport.initialize());
-// app.use(passport.session());
-// configure passport
-// passport.use(new LocalStrategy(User.authenticate()));
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
-
-// parse application/json
+// use express middleware
 app.use(bodyParser.json());
-// Logging and parsing
 app.use(morgan('dev'));
 
-// Set up and use our routes
-// app.use('/', router);
-// var router = require('./routes.js');
-// Serve the client files
-// app.use (express.static(__dirname + '/../client'));
+// serve static files / libraries to the client
 app.use (express.static('./client'));
 app.use ('/scripts', express.static(__dirname + '/../node_modules/react-bootstrap/dist/'));
 app.use ('/scripts', express.static(__dirname + '/../node_modules/bootstrap/dist/'));
@@ -60,9 +26,7 @@ app.use ('/scripts', express.static(__dirname + '/../node_modules/jquery/dist/')
 app.use ('/scripts', express.static(__dirname + '/../node_modules/react/dist/'));
 app.use ('/scripts', express.static(__dirname + '/../node_modules/react-dom/dist/'));
 
-//------------------------------------------
-
-// Routing - chain GET/POST requests for specified route
+// routing: handle endpoint requests from client
 app.route('/api/listings')
   .get(function(req, res) {
     listingsCtrl.getAll(req.query.category, function(statusCode, results) {
@@ -74,9 +38,21 @@ app.route('/api/listings')
       res.status(statusCode).send(results);
     });
   });
+app.route('/api/categories')
+  .get(function(req, res) {
+    categoriesController.getAll(function(statusCode, results) {
+      res.status(statusCode).send(results);
+    });
+  });
+app.route('/api/users')
+  .get(function(req, res) {
+    usersController.getAll(function(statusCode, results) {
+      res.status(statusCode).send(results);
+    });
+  });
 
-
-// Set what we are listening on.
+// Start server, listen for client requests on designated port
+console.log( 'hackifieds server listening on 3000....' );
 app.listen(3000);
 
 module.exports.app = app;

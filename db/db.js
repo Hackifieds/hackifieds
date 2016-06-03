@@ -22,7 +22,7 @@ var User = db.define('User', {
   email: { type: Sequelize.STRING(100), allowNull: false },
   phone: Sequelize.STRING(100),
   school: { type: Sequelize.STRING(100), allowNull: false },
-  cohort: { type: Sequelize.STRING(100), allowNull: false },
+  cohort: { type: Sequelize.STRING(100), allowNull: false }
 });
 
 // Category model
@@ -42,11 +42,11 @@ var Listing = db.define('Listing', {
   endDate: { type: Sequelize.DATE }
 });
 
-// define foreign key relationship
-User.hasMany(Listing, {foreignKey: 'userId'});
-Listing.belongsTo(User, {foreignKey: 'userId'});
-Category.hasMany(Listing, {foreignKey: 'categoryId'});
-Listing.belongsTo(Category, {foreignKey: 'categoryId'});
+// define foreign key relationships
+User.hasMany(Listing, { foreignKey: { name: 'userId', allowNull: false } });
+Listing.belongsTo(User, { foreignKey: { name: 'userId', allowNull: false } });
+Category.hasMany(Listing, { foreignKey: { name: 'categoryId', allowNull: false } });
+Listing.belongsTo(Category, { foreignKey: { name: 'categoryId', allowNull: false } });
 
 // Sync database
 User.sync()
@@ -85,3 +85,4 @@ db.sync()
 exports.User = User;
 exports.Category = Category;
 exports.Listing = Listing;
+
