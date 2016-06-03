@@ -43,7 +43,7 @@ var Listing = db.define('Listing', {
 });
 
 // define foreign key relationships
-User.hasMany(Listing, { foreignKey: 'userId' });
+User.hasMany(Listing, { foreignKey: { name: 'userId', allowNull: false } });
 Listing.belongsTo(User, { foreignKey: { name: 'userId', allowNull: false } });
 Category.hasMany(Listing, { foreignKey: { name: 'categoryId', allowNull: false } });
 Listing.belongsTo(Category, { foreignKey: { name: 'categoryId', allowNull: false } });
