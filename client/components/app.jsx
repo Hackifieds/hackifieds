@@ -15,9 +15,9 @@ class App extends React.Component {
       categories: [],
       users: [],
       listings: [],
-      navCategory: 'Rent',
-      activeFilter: 'All',
-      activeListing: null,
+      navCategory: 'Rent',  //Default listings category to show
+      activeFilter: 'All',  //Default filter to show All
+      activeListing: null,  //Default to not show Listing Info component
       currentUser: {},
       currentView: 'listingsView'
     };
@@ -59,14 +59,17 @@ class App extends React.Component {
   }
 
   handleFilterItemClick(event) {
+    //Set the current activeFilter value
     this.setState({ activeFilter: event.currentTarget.id });
   }
 
   handleListingEntryClick(event) {
+    //Set the current activeListing
     this.setState({ activeListing: Number(event.currentTarget.id) });
   }
 
   handleListingInfoClick(event) {
+    //Set the current activeListing to null / close the Listing Info component
     this.setState({ activeListing: null });
   }
 
