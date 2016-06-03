@@ -36,29 +36,40 @@ nav li {
 
 /* Layout */
 
-
+/* Filter */
 .filter {
-  width: 100%;
-  border: solid 1px black;
+/*  width: 100%;
+  border: solid 1px black;*/
 }
 
 .filter-item {
+  color: black;
+  background-color: transparent;
+  border-color: black;
+}
 
+.filter-item:hover {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
 }
 
 .filter-count {
   margin-left: 5px;
   font-weight: bold;
   font-style: italic;
-
 }
+
+/* Listings */
 .listings {
   width: 100%;
   border: solid 1px black;
 }
 
-.listing-entry {
-  width: 80%;
+.listing-entry:hover {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
 }
 
 /*.listing-entry-start-date {

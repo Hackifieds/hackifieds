@@ -18,6 +18,7 @@ let getUsers = callback => {
   });
 };
 
+//Helper functions performing AJAX requests
 let getListings = (category, callback) => {
   $.ajax({
     url: '/api/listings',
