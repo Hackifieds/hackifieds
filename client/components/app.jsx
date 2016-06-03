@@ -44,7 +44,7 @@ class App extends React.Component {
       activeFilter: event.currentTarget.id
     });
   }
-  
+
   handleListingEntryClick(event) {
     this.setState({
       activeListing: Number(event.currentTarget.id)
