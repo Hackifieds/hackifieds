@@ -19,14 +19,14 @@ let Filter = props => {
 
   //Return the filter component
   return (
-    <div className='filter'>
+    <ul className='filter list-group'>
       { filterLocs.map(loc => 
-        <div>
-          <span className='filter-item' id={loc} onClick={props.handleFilterItemClick}>{loc}</span>
-          <span className='filter-count'>{'(' + locations[loc] + ')'}</span>
-        </div>
+        <li className="filter-item list-group-item">
+          <span className='filter-attribute' id={loc} onClick={props.handleFilterItemClick}>{loc}</span>
+          <span className='filter-count badge badge-primary'>{locations[loc]}</span>
+        </li>
       )}
-    </div>
+    </ul>
   );
 };
 
