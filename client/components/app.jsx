@@ -12,54 +12,63 @@ class App extends React.Component {
     super(props);
 
     this.state = {
+      categories: [],
+      users: [],
       listings: [],
       navCategory: 'Rent',
       activeFilter: 'All',
       activeListing: null,
-      newListing: {}
+      currentUser: {}
     };
   }
 
   componentWillMount () {
+    this.retrieveCategories();
+    this.retrieveUsers();
     this.retrieveListings(this.state.navCategory);
+    this.setCurrentUserByName('malaneti');
+  }
+
+  retrieveCategories () {
+    helpers.getCategories( data => this.setState({categories: data}) );
+  }
+
+  retrieveUsers () {
+    helpers.getUsers( data => this.setState({users: data}) );
+  }
+
+  setCurrentUserByName (name) {
+    helpers.getUsers( data => { this.setState({currentUser: data.filter(usr => usr.username === name)[0]}) } );
   }
 
   retrieveListings (category) {
-    helpers.getListings( category, data => {
-      this.setState( {
-        listings: data
-      })
+    helpers.getListings( category, data => this.setState({listings: data}) );
+  }
+
+  sendListing (newListing) {
+    helpers.postListing(newListing, data => {
+      let newCategory = this.state.categories.filter(cat => cat.categoryId === newListing.categoryId);
+      this.handleNavClick(newCategory[0].categoryName);
     });
   }
 
-  handleNavClick(value) {
-    this.setState({
-      navCategory: value
-    });
+  handleNavClick (value) {
+    this.setState({navCategory: value});
     this.retrieveListings(value);
   }
 
   handleFilterItemClick(event) {
-    this.setState({
-      activeFilter: event.currentTarget.id
-    });
+    this.setState({ activeFilter: event.currentTarget.id });
   }
 
   handleListingEntryClick(event) {
-    this.setState({
-      activeListing: Number(event.currentTarget.id)
-    });
+    this.setState({ activeListing: Number(event.currentTarget.id) });
   }
 
   handleListingInfoClick(event) {
     this.setState({
       activeListing: null
     });
-  }
-
-  sendListing (newListing) {
-    helpers.postListing(newListing);
-    this.retrieveListings();
   }
 
   render () {
@@ -69,7 +78,8 @@ class App extends React.Component {
         <Grid>
           <Row className="show-grid">
             <Col xs={2} md={2} lg={2}>
-              <Filter handleFilterItemClick={this.handleFilterItemClick.bind(this)} listings={this.state.listings}/>
+              <Filter handleFilterItemClick={this.handleFilterItemClick.bind(this)}
+                      listings={this.state.listings}/>
             </Col>
             <Col xs={10} md={10} lg={10}>
               <Listings handleListingEntryClick={this.handleListingEntryClick.bind(this)} 
@@ -80,9 +90,10 @@ class App extends React.Component {
             </Col>
           </Row>
         </Grid>
-        <NewListing newListing={this.state.newListing} clickHandler={this.sendListing.bind(this)}/>
-        <button id="getButton" type="button" onClick={this.retrieveListings.bind(this)}>GET</button>
-        <button id="postButton" type="button" onClick={this.sendListing.bind(this)}>POST</button>
+        <NewListing categories={this.state.categories}
+                    navCategory={this.state.navCategory}
+                    user={this.state.currentUser}
+                    clickHandler={this.sendListing.bind(this)}/>
       </div>
     );
   }

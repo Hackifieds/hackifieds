@@ -10,6 +10,13 @@ class NewListing extends React.Component {
   }
 
   submitHandler () {
+    if ( ! this.newListing.categoryId ) {
+      let currentCat = this.props.categories.filter(cat => {
+        return cat.categoryName === this.props.navCategory;
+      });
+      this.newListing.categoryId = currentCat[0].categoryId;
+    }
+    this.newListing.userId = this.props.user.userId;
     this.props.clickHandler(this.newListing);
   }
 
@@ -20,16 +27,15 @@ class NewListing extends React.Component {
           Title:
             <input type="text" name="listingTitle" id="listingTitle" size="72"
                    maxlength="72" placeholder=" Enter listing title here"
-                   value={ this.props.newListing.title }
                    onChange={ e => this.setListingField('title', e.target.value) }/>
         </p>
         <p>
-          <select name="listingCategory" id="listingCategory"
-//                  onChange={ e => this.setListingField('categoryName', e.target.value) }>
-            >
-            <option defaultValue value="Rent">Rent</option>
-            <option value="Buy">Buy</option>
-            <option value="Hack">Hack</option>
+          <select name="listingCategory" id="listingCategory" defaultValue={this.props.navCategory}
+                  onChange={ e => this.setListingField('categoryId',
+                    this.props.categories.filter(cat => cat.categoryName === e.target.value)[0].categoryId) }>
+            { this.props.categories.map( cat => <option key={cat.categoryId}
+              value={cat.categoryName}
+              >{cat.categoryName}</option> ) }
           </select>
         </p>
         <p>
