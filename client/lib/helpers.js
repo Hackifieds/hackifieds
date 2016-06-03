@@ -4,54 +4,19 @@ let getListings = (category, callback) => {
     method: 'GET',
     contentType: 'application/json',
     data: {category: category},
-    success: data => {
-      console.log('GET success', data);
-      callback(data);
-    },
-    error: (xhr, ajaxOptions, thrownException) => {
-      console.log('Client GET error');
-      console.log('XHR: ', xhr);
-      console.log('ajaxOptions: ', ajaxOptions);
-      console.log('Exception: ', thrownException);
-    }
+    success: data => callback(data),
+    error: err => console.log( 'Error getting listings from server.', err)
   });
 };
 
-let postListing = (category) => {
-  //placeholder - will be an input to the ajax request
-  let categories = {
-    Rent: 1,
-    Buy: 2,
-    Hack: 3
-  };
-  
-  let mock = {
-    title: 'This is an example title',
-    description: 'This is an example description',
-    location: 'Location' + Math.floor(Math.random() * 10),
-    price: Math.floor(Math.random() * 2000),
-    startDate: Date.now(),
-    endDate: Date.now(),
-    createdAt: Date.now(),
-    updatedAt: Date.now(),
-    userId: 3,
-    categoryId: categories[category]
-  };
-
+let postListing = listing => {
   $.ajax({
     url: '/api/listings',
     method: 'POST',
     contentType: 'application/json',
-    data: JSON.stringify(mock),
-    success: data => {
-      console.log('POST success', data);
-    },
-    error: (xhr, ajaxOptions, thrownException) => {
-      console.log('Client POST error');
-      console.log('XHR: ', xhr);
-      console.log('ajaxOptions: ', ajaxOptions);
-      console.log('Exception: ', thrownException);
-    }
+    data: JSON.stringify(listing),
+    success: data => console.log('Sent new listing to server.', data),
+    error: err => console.log( 'Error sending listing to server.', err)
   });
 };
 

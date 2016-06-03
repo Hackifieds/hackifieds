@@ -15,7 +15,8 @@ class App extends React.Component {
       listings: [],
       navCategory: 'Rent',
       activeFilter: 'All',
-      activeListing: null
+      activeListing: null,
+      newListing: {}
     };
   }
 
@@ -29,11 +30,6 @@ class App extends React.Component {
         listings: data
       })
     });
-  }
-
-  sendListing () {
-    helpers.postListing(this.state.navCategory);
-    this.retrieveListings(this.state.navCategory);
   }
 
   handleNavClick(value) {
@@ -61,6 +57,11 @@ class App extends React.Component {
     });
   }
 
+  sendListing (newListing) {
+    helpers.postListing(newListing);
+    this.retrieveListings();
+  }
+
   render () {
     return (
       <div className='app'>
@@ -79,6 +80,7 @@ class App extends React.Component {
             </Col>
           </Row>
         </Grid>
+        <NewListing newListing={this.state.newListing} clickHandler={this.sendListing.bind(this)}/>
         <button id="getButton" type="button" onClick={this.retrieveListings.bind(this)}>GET</button>
         <button id="postButton" type="button" onClick={this.sendListing.bind(this)}>POST</button>
       </div>
