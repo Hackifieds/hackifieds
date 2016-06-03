@@ -66,10 +66,10 @@ class App extends React.Component {
         <Nav handleNavClick={this.handleNavClick.bind(this)}/>
         <Grid>
           <Row className="show-grid">
-            <Col xs={4} md={4}>
+            <Col xs={2} md={2} lg={2}>
               <Filter handleFilterItemClick={this.handleFilterItemClick.bind(this)} listings={this.state.listings}/>
             </Col>
-            <Col xs={8} md={8} lg={8}>
+            <Col xs={10} md={10} lg={10}>
               <Listings handleListingEntryClick={this.handleListingEntryClick.bind(this)} 
                   handleListingInfoClick={this.handleListingInfoClick.bind(this)}
                   activeFilter={this.state.activeFilter}
