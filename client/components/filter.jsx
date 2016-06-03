@@ -1,9 +1,9 @@
 let Filter = props => {
-  //Set default values for Filter component elements
+  //Set default values for All items
   let locations = {All: 0};
   let filterLocs = ['All'];
 
-  //Populate the filter list
+  //Populate the filtered list
   props.listings.forEach( listing => {
     if( !locations[listing.location] ) {
       locations[listing.location] = 0;
