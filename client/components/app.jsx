@@ -38,7 +38,7 @@ class App extends React.Component {
   }
 
   setCurrentUserByName (name) {
-    helpers.getUsers( data => { this.setState({currentUser: data.filter(usr => usr.username === name)[0]}) } );
+    helpers.getUsers( data => { this.setState({currentUser: data.filter(usr => usr.username === name)[0]}) });
   }
 
   retrieveListings (category) {
@@ -53,7 +53,7 @@ class App extends React.Component {
   }
 
   handleNavClick (value) {
-    this.setState({navCategory: value});
+    this.setState({ navCategory: value, activeFilter: 'All' });
     this.retrieveListings(value);
   }
 
@@ -66,9 +66,7 @@ class App extends React.Component {
   }
 
   handleListingInfoClick(event) {
-    this.setState({
-      activeListing: null
-    });
+    this.setState({ activeListing: null });
   }
 
   render () {
