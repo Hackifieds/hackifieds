@@ -6,7 +6,7 @@ const ListingEntry = props => (
     <Grid>
       <Row>
         <Col xs={1} md={1} lg={1}>
-          <span className="listing-entry-end-date">{props.listing.createdAt}</span>
+          <span className="listing-entry-date">{props.listing.createdAt}</span>
         </Col>
         <Col xs={1} md={1} lg={1}>
           <span className="listing-entry-price">${props.listing.price}</span>
