@@ -10,7 +10,7 @@ const ListingInfo = props => (
       <Modal.Body>
         <div className="listing-info-date"> List Date: {props.listing.createdAt} </div>
         <div className="listing-info-location"> Location: {props.listing.location} </div>
-        <div className="listing-info-price"> Price: {props.listing.price} </div>
+        <div className="listing-info-price"> Price: ${props.listing.price} </div>
         <div className="listing-info-start-date"> Start Date: {props.listing.startDate} </div>
         <div className="listing-info-end-date"> End Date: {props.listing.endDate} </div>
         <div className="listing-info-description"> Description: {props.listing.description} </div>
