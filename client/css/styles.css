@@ -38,7 +38,7 @@ nav li {
 
 
 .filter {
-  width: 20%;
+  width: 100%;
   border: solid 1px black;
 }
 
@@ -53,7 +53,7 @@ nav li {
 
 }
 .listings {
-  width: 80%;
+  width: 100%;
   border: solid 1px black;
 }
 
@@ -61,7 +61,10 @@ nav li {
   width: 80%;
 }
 
-.listing-entry-date {
+/*.listing-entry-start-date {
+  width: 5%;
+}
+.listing-entry-end-date {
   width: 5%;
 }
 .listing-entry-price {
@@ -69,7 +72,7 @@ nav li {
 }
 .listing-entry-location {
   width: 5%;  
-}
+}*/
 .listing-entry-title {
   text-decoration: underline;
 }

@@ -3,6 +3,7 @@ import Filter from './filter.jsx';
 import Listings from './listings.jsx';
 import ListingInfo from './listingInfo.jsx';
 import helpers from '../lib/helpers.js';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 class App extends React.Component {
 
@@ -63,12 +64,20 @@ class App extends React.Component {
     return (
       <div className='app'>
         <Nav handleNavClick={this.handleNavClick.bind(this)}/>
-        <Listings handleListingEntryClick={this.handleListingEntryClick.bind(this)} 
+        <Grid>
+          <Row className="show-grid">
+            <Col xs={2} md={2} lg={2}>
+              <Filter handleFilterItemClick={this.handleFilterItemClick.bind(this)} listings={this.state.listings}/>
+            </Col>
+            <Col xs={10} md={10} lg={10}>
+              <Listings handleListingEntryClick={this.handleListingEntryClick.bind(this)} 
                   handleListingInfoClick={this.handleListingInfoClick.bind(this)}
                   activeFilter={this.state.activeFilter}
                   activeListing={this.state.activeListing}
                   listings={this.state.listings}/>
-        <Filter handleFilterItemClick={this.handleFilterItemClick.bind(this)} listings={this.state.listings}/>
+            </Col>
+          </Row>
+        </Grid>
         <button id="getButton" type="button" onClick={this.retrieveListings.bind(this)}>GET</button>
         <button id="postButton" type="button" onClick={this.sendListing.bind(this)}>POST</button>
       </div>
