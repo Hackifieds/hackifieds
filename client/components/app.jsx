@@ -18,7 +18,8 @@ class App extends React.Component {
       navCategory: 'Rent',
       activeFilter: 'All',
       activeListing: null,
-      currentUser: {}
+      currentUser: {},
+      currentView: 'listingsView'
     };
   }
 
@@ -53,7 +54,7 @@ class App extends React.Component {
   }
 
   handleNavClick (value) {
-    this.setState({ navCategory: value, activeFilter: 'All' });
+    this.setState({ currentView: 'listingsView', navCategory: value, activeFilter: 'All' });
     this.retrieveListings(value);
   }
 
@@ -70,28 +71,44 @@ class App extends React.Component {
   }
 
   render () {
+    let viewLogic;
+
+    if ( this.state.currentView === 'listingsView' ) {
+      viewLogic =
+        <Row className="show-grid">
+          <Col xs={2} md={2} lg={2}>
+            <Filter handleFilterItemClick={this.handleFilterItemClick.bind(this)}
+                    listings={this.state.listings}/>
+          </Col>
+          <Col xs={10} md={10} lg={10}>
+            <Listings handleListingEntryClick={this.handleListingEntryClick.bind(this)}
+                      handleListingInfoClick={this.handleListingInfoClick.bind(this)}
+                      activeFilter={this.state.activeFilter}
+                      activeListing={this.state.activeListing}
+                      listings={this.state.listings}/>
+          </Col>
+        </Row>;
+    } else if (this.state.currentView === 'newListingView' ) {
+      viewLogic =
+        <Row className="show-grid">
+          <Col xs={12} md={12} lg={12}>
+            <NewListing categories={this.state.categories}
+                        navCategory={this.state.navCategory}
+                        user={this.state.currentUser}
+                        clickHandler={this.sendListing.bind(this)}/>
+          </Col>
+        </Row>;
+    }
+
     return (
-      <div className='app'>
+      <div className="app">
+        <input type="button"
+               value="Create New Listing"
+               onClick={ () => this.setState({currentView: 'newListingView'}) }/>
         <Nav handleNavClick={this.handleNavClick.bind(this)}/>
         <Grid>
-          <Row className="show-grid">
-            <Col xs={2} md={2} lg={2}>
-              <Filter handleFilterItemClick={this.handleFilterItemClick.bind(this)}
-                      listings={this.state.listings}/>
-            </Col>
-            <Col xs={10} md={10} lg={10}>
-              <Listings handleListingEntryClick={this.handleListingEntryClick.bind(this)} 
-                  handleListingInfoClick={this.handleListingInfoClick.bind(this)}
-                  activeFilter={this.state.activeFilter}
-                  activeListing={this.state.activeListing}
-                  listings={this.state.listings}/>
-            </Col>
-          </Row>
+            {viewLogic}
         </Grid>
-        <NewListing categories={this.state.categories}
-                    navCategory={this.state.navCategory}
-                    user={this.state.currentUser}
-                    clickHandler={this.sendListing.bind(this)}/>
       </div>
     );
   }
