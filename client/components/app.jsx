@@ -2,6 +2,7 @@ import Nav from './nav.jsx';
 import Filter from './filter.jsx';
 import Listings from './listings.jsx';
 import ListingInfo from './listingInfo.jsx';
+import NewListing from './newListing.jsx';
 import helpers from '../lib/helpers.js';
 import { Grid, Row, Col } from 'react-bootstrap';
 
