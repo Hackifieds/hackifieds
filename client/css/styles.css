@@ -36,7 +36,7 @@ nav li {
 
 /* Layout */
 
-
+/* Filter */
 .filter {
 /*  width: 100%;
   border: solid 1px black;*/
@@ -58,8 +58,9 @@ nav li {
   margin-left: 5px;
   font-weight: bold;
   font-style: italic;
-
 }
+
+/* Listings */
 .listings {
   width: 100%;
   border: solid 1px black;
