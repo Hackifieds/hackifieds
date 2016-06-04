@@ -41,5 +41,27 @@ let postListing = (listing, callback) => {
   });
 };
 
-export default { getCategories, getUsers, getListings, postListing };
+let dateFormatter = (date) => {
+  let months = {
+    0: 'Jan',
+    1: 'Feb',
+    2: 'Mar',
+    3: 'Apr',
+    4: 'May',
+    5: 'Jun',
+    6: 'Jul',
+    7: 'Aug',
+    8: 'Sep',
+    9: 'Oct',
+    10: 'Nov',
+    11: 'Dec'
+  }
+  let formattedDate = new Date(date);
+  let month = formattedDate.getMonth();
+  let day = formattedDate.getDate();
+
+  return months[month] + ' ' + day;
+};
+
+export default { getCategories, getUsers, getListings, postListing, dateFormatter };
 
