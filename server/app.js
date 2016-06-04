@@ -11,7 +11,7 @@ var db = require('../db/db');
 var listingsCtrl = require('./controllers/listings-controller.js');
 var categoriesController = require('./controllers/categoriesController');
 var usersController = require('./controllers/usersController');
-var github = require('./OAuth/github_oauth');
+var github = require('./auth/github_oauth');
 
 // passport session setup
 passport.serializeUser(function(user, done) {
@@ -104,10 +104,14 @@ app.route('/api/auth')
 
 app.get('/logout', function(req, res) {
   req.session.destroy(function() {
-    console.log('Req session after', req.session);
+    console.log( req.session);
     res.redirect('/');
+   
   });
+
 });
+
+
 
 // Start server, listen for client requests on designated port
 console.log( 'hackifieds server listening on 3000....' );
