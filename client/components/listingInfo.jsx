@@ -1,7 +1,21 @@
 import { Modal, Button } from 'react-bootstrap';
 import helper from '../lib/helpers';
 
-const ListingInfo = props => (
+const ListingInfo = props => {
+  let contactLogic;
+
+  if (Object.keys(props.user).length === 0) {
+    contactLogic =
+      <a href='/auth/github'>Contact</a>;
+  } else {
+    contactLogic =
+      <div>
+        <div className="listing-info-email"> Email: {props.listing.email} </div>
+        <div className="listing-info-telphone"> Telephone: {props.listing.telephone} </div>
+      </div>;
+  }
+
+  return (
   <div className="static-modal">
     <Modal.Dialog>
       <Modal.Header>
@@ -15,8 +29,7 @@ const ListingInfo = props => (
         <div className="listing-info-start-date"> Start Date: {helper.dateFormatter(props.listing.startDate)} </div>
         <div className="listing-info-end-date"> End Date: {helper.dateFormatter(props.listing.endDate)} </div>
         <div className="listing-info-description"> Description: {props.listing.description} </div>
-        <div className="listing-info-email"> Email: {props.listing.email} </div>
-        <div className="listing-info-telphone"> Telephone: {props.listing.telephone} </div>
+        {contactLogic}
       </Modal.Body>
 
       <Modal.Footer>
@@ -25,6 +38,7 @@ const ListingInfo = props => (
 
     </Modal.Dialog>
   </div>
-);
+  )
+};
 
 export default ListingInfo;

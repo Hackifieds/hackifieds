@@ -24,22 +24,15 @@ class App extends React.Component {
   }
 
   componentWillMount () {
+    console.log('listings:', this.state.listings);
+    console.log('activelisting:', this.state.activeListing);
+    helpers.userAuth((user) => this.setSession(user));
     this.retrieveCategories();
-    this.retrieveUsers();
     this.retrieveListings(this.state.navCategory);
-    this.setCurrentUserByName('malaneti');
   }
 
   retrieveCategories () {
     helpers.getCategories( data => this.setState({categories: data}) );
-  }
-
-  retrieveUsers () {
-    helpers.getUsers( data => this.setState({users: data}) );
-  }
-
-  setCurrentUserByName (name) {
-    helpers.getUsers( data => { this.setState({currentUser: data.filter(usr => usr.username === name)[0]}) });
   }
 
   retrieveListings (category) {
@@ -70,11 +63,26 @@ class App extends React.Component {
 
   handleListingInfoClick(event) {
     //Set the current activeListing to null / close the Listing Info component
+    console.log('clicked handleListingInfoClick');
     this.setState({ activeListing: null });
+  }
+
+  setSession(user) {
+    console.log('Setting session data: ', user);
+    this.setState({ currentUser: user });
+  }
+
+  logOut() {
+    console.log('Logging out');
+    helpers.logout(function(data) {
+      console.log('logout', data);
+    });
+    this.setState({ currentUser: {} });
   }
 
   render () {
     let viewLogic;
+    let loginLogic;
 
     if ( this.state.currentView === 'listingsView' ) {
       viewLogic =
@@ -88,7 +96,8 @@ class App extends React.Component {
                       handleListingInfoClick={this.handleListingInfoClick.bind(this)}
                       activeFilter={this.state.activeFilter}
                       activeListing={this.state.activeListing}
-                      listings={this.state.listings}/>
+                      listings={this.state.listings}
+                      user={this.state.currentUser}/>
           </Col>
         </Row>;
     } else if (this.state.currentView === 'newListingView' ) {
@@ -103,11 +112,20 @@ class App extends React.Component {
         </Row>;
     }
 
+    if (Object.keys(this.state.currentUser).length === 0) {
+      loginLogic =
+        <a href="/auth/github">Login with GitHub</a>;
+    } else {
+      loginLogic =
+        <a href='/' onClick={this.logOut.bind(this)}>Logout</a>;
+    }
+
     return (
       <div className="app">
         <input type="button"
                value="Create New Listing"
                onClick={ () => this.setState({currentView: 'newListingView'}) }/>
+        {loginLogic}
         <Nav handleNavClick={this.handleNavClick.bind(this)}/>
         <Grid>
             {viewLogic}
