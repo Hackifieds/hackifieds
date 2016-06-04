@@ -41,6 +41,24 @@ let postListing = (listing, callback) => {
   });
 };
 
+let userAuth = (callback) => {
+  $.ajax({
+    url: '/api/auth',
+    method: 'GET',
+    success: data => callback(data),
+    error: err => console.log( 'Error getting session from server.', err)
+  });
+};
+
+let logout = (callback) => {
+  $.ajax({
+    url: '/logout',
+    method: 'GET',
+    success: data => callback(data),
+    error: err => console.log( 'Error logging out.', err)
+  });
+};
+
 let dateFormatter = (date) => {
   let months = {
     0: 'Jan',
@@ -63,5 +81,5 @@ let dateFormatter = (date) => {
   return months[month] + ' ' + day;
 };
 
-export default { getCategories, getUsers, getListings, postListing, dateFormatter };
+export default { getCategories, getUsers, getListings, postListing, userAuth, dateFormatter };
 

@@ -13,6 +13,7 @@ node_modules/
 compiled/
 client/dist/
 npm-debug.log
+OAuth/
 
 # Floobits
 .floo
