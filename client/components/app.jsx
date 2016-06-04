@@ -36,7 +36,15 @@ class App extends React.Component {
   }
 
   retrieveListings (category) {
-    helpers.getListings( category, data => this.setState({listings: data}) );
+    helpers.getListings( category, data => {
+      this.setState({listings: data})
+for ( let lstg of data ) {
+  console.log( `listing price: ${lstg.price}` );
+  console.log( `listing username: ${lstg.username}` );
+  console.log( `listing phone: ${lstg.phone}` );
+  console.log( `listing email: ${lstg.email}` );
+}
+    });
   }
 
   sendListing (newListing) {

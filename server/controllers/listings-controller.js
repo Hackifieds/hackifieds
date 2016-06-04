@@ -6,9 +6,14 @@ var listings = {};
 listings.getAll = function(category, callback) {
   // Listing.findAll({ order: ['createdAt', 'DESC'] })
   db.Listing.findAll({
-    include: [{
+    include:
+    [{
       model: db.Category,
       where: {categoryName: category}
+    },
+    {
+      model: db.User,
+      attributes: ['username', 'email', 'phone']
     }]
   })
     .then(function(listings) {
