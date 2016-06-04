@@ -1,12 +1,13 @@
 import ListingInfo from './listingInfo.jsx';
 import { Grid, Row, Col } from 'react-bootstrap';
+import helper from '../lib/helpers';
 
 const ListingEntry = props => (
   <div className='listing-entry'>
     <Grid>
       <Row>
         <Col xs={1} md={1} lg={1}>
-          <span className="listing-entry-date">{props.listing.createdAt}</span>
+          <span className="listing-entry-date">{helper.dateFormatter(props.listing.createdAt)}</span>
         </Col>
         <Col xs={1} md={1} lg={1}>
           <span className="listing-entry-price">${props.listing.price}</span>
