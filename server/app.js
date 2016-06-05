@@ -8,16 +8,14 @@ var GitHubStrategy = require('passport-github2').Strategy;
 
 // custom dependencies
 var db = require('../db/db');
-var listingsCtrl = require('./controllers/listings-controller.js');
+var listingsCtrl = require('./controllers/listingsController');
 var categoriesController = require('./controllers/categoriesController');
-var usersController = require('./controllers/usersController');
 var github = require('./auth/github_oauth');
 
 // passport session setup
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
-
 passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
@@ -106,12 +104,9 @@ app.get('/logout', function(req, res) {
   req.session.destroy(function() {
     console.log( req.session);
     res.redirect('/');
-   
   });
 
 });
-
-
 
 // Start server, listen for client requests on designated port
 console.log( 'hackifieds server listening on 3000....' );

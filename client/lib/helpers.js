@@ -8,16 +8,6 @@ let getCategories = callback => {
   });
 };
 
-let getUsers = callback => {
-  $.ajax({
-    url: '/api/users',
-    method: 'GET',
-    contentType: 'application/json',
-    success: data => callback(data),
-    error: err => console.log( 'Error getting users from server.', err)
-  });
-};
-
 //Helper functions performing AJAX requests
 let getListings = (category, callback) => {
   $.ajax({
@@ -41,7 +31,7 @@ let postListing = (listing, callback) => {
   });
 };
 
-let userAuth = (callback) => {
+let userAuth = callback => {
   $.ajax({
     url: '/api/auth',
     method: 'GET',
@@ -50,7 +40,7 @@ let userAuth = (callback) => {
   });
 };
 
-let logout = (callback) => {
+let logout = callback => {
   $.ajax({
     url: '/logout',
     method: 'GET',
@@ -59,7 +49,7 @@ let logout = (callback) => {
   });
 };
 
-let dateFormatter = (date) => {
+let dateFormatter = date => {
   let months = {
     0: 'Jan',
     1: 'Feb',
@@ -81,5 +71,5 @@ let dateFormatter = (date) => {
   return months[month] + ' ' + day;
 };
 
-export default { getCategories, getUsers, getListings, postListing, userAuth, dateFormatter, logout};
+export default { getCategories, getListings, postListing, userAuth, dateFormatter, logout};
 

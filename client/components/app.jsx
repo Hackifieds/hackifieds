@@ -13,7 +13,6 @@ class App extends React.Component {
 
     this.state = {
       categories: [],
-      users: [],
       listings: [],
       navCategory: 'Rent',  //Default listings category to show
       activeFilter: 'All',  //Default filter to show All
@@ -24,8 +23,6 @@ class App extends React.Component {
   }
 
   componentWillMount () {
-    console.log('listings:', this.state.listings);
-    console.log('activelisting:', this.state.activeListing);
     helpers.userAuth((user) => this.setSession(user));
     this.retrieveCategories();
     this.retrieveListings(this.state.navCategory);
@@ -36,15 +33,7 @@ class App extends React.Component {
   }
 
   retrieveListings (category) {
-    helpers.getListings( category, data => {
-      this.setState({listings: data});
-for ( let lstg of data ) {
-  console.log( `listing price: ${lstg.price}` );
-  console.log( `listing username: ${lstg.username}` );
-  console.log( `listing email: ${lstg.email}` );
-  console.log( `listing categoryName: ${lstg.categoryName}` );
-}
-    });
+    helpers.getListings( category, data => this.setState({listings: data}) );
   }
 
   sendListing (newListing) {
@@ -71,24 +60,15 @@ for ( let lstg of data ) {
 
   handleListingInfoClick (event) {
     //Set the current activeListing to null / close the Listing Info component
-    console.log('clicked handleListingInfoClick');
     this.setState({ activeListing: null });
   }
 
   setSession (user) {
-    console.log('Setting session data: ', user);
     this.setState({ currentUser: user });
   }
 
   logOut () {
-    console.log('Logging out');
-    helpers.logout(function(data) {
-      console.log('logout', data);
-        this.setState({ currentUser: {} });
-  
-    });
-  
-   
+    helpers.logout( data => this.setState({currentUser: {}}) );
   }
 
   render () {
@@ -127,7 +107,6 @@ for ( let lstg of data ) {
       loginLogic =
         <a href="/auth/github">Login with GitHub</a>;
     } else {
-
       loginLogic =
         <a href='/' onClick={this.logOut.bind(this)}>Logout</a>;
     }

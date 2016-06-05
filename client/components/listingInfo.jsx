@@ -10,8 +10,8 @@ const ListingInfo = props => {
   } else {
     contactLogic =
       <div>
-        <div className="listing-info-email"> Email: {props.listing.email} </div>
-        <div className="listing-info-telphone"> Telephone: {props.listing.phone} </div>
+        <div className="listing-info-email"> Email: {props.listing.User.email} </div>
+        <div className="listing-info-telphone"> Telephone: {props.listing.User.phone} </div>
       </div>;
   }
 
