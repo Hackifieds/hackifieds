@@ -2,7 +2,7 @@
 var db = require('../../db/db');
 
 // retrieve all categories from DB
-var getAll = function (callback) {
+exports.getAll = function (callback) {
   db.Category.findAll()
     .then( function (categories) {
       callback(200, categories);
@@ -12,6 +12,4 @@ var getAll = function (callback) {
       callback(404, error);
     });
 };
-
-exports.getAll = getAll;
 

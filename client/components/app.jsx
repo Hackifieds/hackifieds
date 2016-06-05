@@ -13,7 +13,6 @@ class App extends React.Component {
 
     this.state = {
       categories: [],
-      users: [],
       listings: [],
       navCategory: 'Rent',  //Default listings category to show
       activeFilter: 'All',  //Default filter to show All
@@ -24,8 +23,6 @@ class App extends React.Component {
   }
 
   componentWillMount () {
-    console.log('listings:', this.state.listings);
-    console.log('activelisting:', this.state.activeListing);
     helpers.userAuth((user) => this.setSession(user));
     this.retrieveCategories();
     this.retrieveListings(this.state.navCategory);
@@ -51,36 +48,27 @@ class App extends React.Component {
     this.retrieveListings(value);
   }
 
-  handleFilterItemClick(event) {
+  handleFilterItemClick (event) {
     //Set the current activeFilter value
     this.setState({ activeFilter: event.currentTarget.id });
   }
 
-  handleListingEntryClick(event) {
+  handleListingEntryClick (event) {
     //Set the current activeListing
     this.setState({ activeListing: Number(event.currentTarget.id) });
   }
 
-  handleListingInfoClick(event) {
+  handleListingInfoClick (event) {
     //Set the current activeListing to null / close the Listing Info component
-    console.log('clicked handleListingInfoClick');
     this.setState({ activeListing: null });
   }
 
-  setSession(user) {
-    console.log('Setting session data: ', user);
+  setSession (user) {
     this.setState({ currentUser: user });
   }
 
-  logOut() {
-    console.log('Logging out');
-    helpers.logout(function(data) {
-      console.log('logout', data);
-        this.setState({ currentUser: {} });
-  
-    });
-  
-   
+  logOut () {
+    helpers.logout( data => this.setState({currentUser: {}}) );
   }
 
   render () {
@@ -119,7 +107,6 @@ class App extends React.Component {
       loginLogic =
         <a href="/auth/github">Login with GitHub</a>;
     } else {
-
       loginLogic =
         <a href='/' onClick={this.logOut.bind(this)}>Logout</a>;
     }

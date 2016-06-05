@@ -1,14 +1,18 @@
 var db = require('../../db/db');
 
-var listings = {};
-
-//Controller method - retrieve all listings from DB
-listings.getAll = function(category, callback) {
+//Controller method - retrieve joined listing/user/category fields from DB
+exports.getAll = function(category, callback) {
   // Listing.findAll({ order: ['createdAt', 'DESC'] })
   db.Listing.findAll({
-    include: [{
+    include:
+    [{
       model: db.Category,
-      where: {categoryName: category}
+      attributes: ['categoryName'],
+      where: {categoryName: category},
+    },
+    {
+      model: db.User,
+      attributes: ['username', 'phone', 'email']
     }]
   })
     .then(function(listings) {
@@ -21,7 +25,7 @@ listings.getAll = function(category, callback) {
 };
 
 //Controller method - add a listings to DB
-listings.addOne = function(listing, callback) {
+exports.addOne = function(listing, callback) {
   db.Listing.create(listing)
     .then(function(listing) {
       callback(201, listing);
@@ -32,4 +36,3 @@ listings.addOne = function(listing, callback) {
     });
 };
 
-module.exports = listings;
