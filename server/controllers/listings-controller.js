@@ -9,11 +9,9 @@ listings.getAll = function(category, callback) {
     include:
     [{
       model: db.Category,
-      where: {categoryName: category}
-    },
-    {
-      model: db.User,
-      attributes: ['username', 'email', 'phone']
+      attributes: ['categoryName'],
+      where: {categoryName: category},
+      required: true
     }]
   })
     .then(function(listings) {

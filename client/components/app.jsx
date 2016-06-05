@@ -37,12 +37,12 @@ class App extends React.Component {
 
   retrieveListings (category) {
     helpers.getListings( category, data => {
-      this.setState({listings: data})
+      this.setState({listings: data});
 for ( let lstg of data ) {
   console.log( `listing price: ${lstg.price}` );
   console.log( `listing username: ${lstg.username}` );
-  console.log( `listing phone: ${lstg.phone}` );
   console.log( `listing email: ${lstg.email}` );
+  console.log( `listing categoryName: ${lstg.categoryName}` );
 }
     });
   }
@@ -59,28 +59,28 @@ for ( let lstg of data ) {
     this.retrieveListings(value);
   }
 
-  handleFilterItemClick(event) {
+  handleFilterItemClick (event) {
     //Set the current activeFilter value
     this.setState({ activeFilter: event.currentTarget.id });
   }
 
-  handleListingEntryClick(event) {
+  handleListingEntryClick (event) {
     //Set the current activeListing
     this.setState({ activeListing: Number(event.currentTarget.id) });
   }
 
-  handleListingInfoClick(event) {
+  handleListingInfoClick (event) {
     //Set the current activeListing to null / close the Listing Info component
     console.log('clicked handleListingInfoClick');
     this.setState({ activeListing: null });
   }
 
-  setSession(user) {
+  setSession (user) {
     console.log('Setting session data: ', user);
     this.setState({ currentUser: user });
   }
 
-  logOut() {
+  logOut () {
     console.log('Logging out');
     helpers.logout(function(data) {
       console.log('logout', data);
