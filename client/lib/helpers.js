@@ -81,5 +81,5 @@ let dateFormatter = (date) => {
   return months[month] + ' ' + day;
 };
 
-export default { getCategories, getUsers, getListings, postListing, userAuth, dateFormatter };
+export default { getCategories, getUsers, getListings, postListing, userAuth, dateFormatter, logout};
 

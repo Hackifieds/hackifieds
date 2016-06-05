@@ -76,8 +76,11 @@ class App extends React.Component {
     console.log('Logging out');
     helpers.logout(function(data) {
       console.log('logout', data);
+        this.setState({ currentUser: {} });
+  
     });
-    this.setState({ currentUser: {} });
+  
+   
   }
 
   render () {
@@ -116,6 +119,7 @@ class App extends React.Component {
       loginLogic =
         <a href="/auth/github">Login with GitHub</a>;
     } else {
+
       loginLogic =
         <a href='/' onClick={this.logOut.bind(this)}>Logout</a>;
     }
