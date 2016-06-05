@@ -6,11 +6,14 @@ import NewListing from './newListing.jsx';
 import helpers from '../lib/helpers.js';
 import { Grid, Row, Col } from 'react-bootstrap';
 
+
 class App extends React.Component {
+
 
   constructor (props) {
     super(props);
 
+    window.globalVar = {};
     this.state = {
       categories: [],
       listings: [],
@@ -24,6 +27,15 @@ class App extends React.Component {
 
   componentWillMount () {
     helpers.userAuth((user) => this.setSession(user));
+    globalVar.callback = user => {
+      user = user || {};
+      this.setState({currentUser: user})
+      this.setSession(user);
+      this.setState({activeListing: 2});
+    };
+    console.log('listings:', this.state.listings);
+    console.log('activelisting:', this.state.activeListing);
+    // helpers.userAuth((user) => this.setSession(user));
     this.retrieveCategories();
     this.retrieveListings(this.state.navCategory);
   }
@@ -119,7 +131,7 @@ class App extends React.Component {
         {loginLogic}
         <Nav handleNavClick={this.handleNavClick.bind(this)}/>
         <Grid>
-            {viewLogic}
+          {viewLogic}
         </Grid>
       </div>
     );

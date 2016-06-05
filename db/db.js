@@ -16,13 +16,13 @@ var db = new Sequelize('hackifieds', 'root', '', {
 // User model
 var User = db.define('User', {
   userId: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
-  username: { type: Sequelize.STRING(100), allowNull: false },
-  firstName: { type: Sequelize.STRING(100), allowNull: false },
-  lastName: { type: Sequelize.STRING(100), allowNull: false },
-  email: { type: Sequelize.STRING(100), allowNull: false },
+  username: { type: Sequelize.STRING(100), allowNull: true },
+  firstName: { type: Sequelize.STRING(100), allowNull: true },
+  lastName: { type: Sequelize.STRING(100), allowNull: true },
+  email: { type: Sequelize.STRING(100), allowNull: true },
   phone: Sequelize.STRING(100),
-  school: { type: Sequelize.STRING(100), allowNull: false },
-  cohort: { type: Sequelize.STRING(100), allowNull: false }
+  school: { type: Sequelize.STRING(100), allowNull: true },
+  cohort: { type: Sequelize.STRING(100), allowNull: true }
 });
 
 // Category model
