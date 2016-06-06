@@ -34,7 +34,7 @@ class NewListing extends React.Component {
         <FormGroup inline>
           <Row>
             <Col sm={1}></Col>
-            <Col componentClass={ControlLabel} sm={1}>Title</Col>
+            <Col componentClass={ControlLabel} sm={1}>Title*</Col>
             <Col sm={9}>
               <FormControl type="text" name="listingTitle" id="listingTitle" size="72"
                            maxlength="72" placeholder="Enter the title of your listing here" required
@@ -47,7 +47,7 @@ class NewListing extends React.Component {
         <FormGroup inline>
           <Row>
             <Col sm={1}></Col>
-            <Col componentClass={ControlLabel} sm={1}>Post in</Col>
+            <Col componentClass={ControlLabel} sm={1}>Post in*</Col>
             <Col sm={3}>
               <FormControl componentClass="select" name="listingCategory" id="listingCategory" required
                            defaultValue={this.props.navCategory}
@@ -64,7 +64,7 @@ class NewListing extends React.Component {
         <FormGroup inline>
           <Row>
             <Col sm={1}></Col>
-            <Col componentClass={ControlLabel} sm={1}>Location</Col>
+            <Col componentClass={ControlLabel} sm={1}>Location*</Col>
             <Col sm={3}>
               <FormControl type="text" name="listingLocation" id="listingLocation" required
                            size="48" maxlength="48"
@@ -93,7 +93,7 @@ class NewListing extends React.Component {
                            onChange={ e => this.setListingField('telephone', e.target.value) }/>
             </Col>
             <Col sm={2}></Col>
-            <Col componentClass={ControlLabel} sm={1}>Email</Col>
+            <Col componentClass={ControlLabel} sm={1}>Email*</Col>
             <Col sm={3}>
               <FormControl type="email" placeholder="Email address per Github" disabled/>
             </Col>
@@ -128,7 +128,7 @@ class NewListing extends React.Component {
         <FormGroup inline>
           <Row>
             <Col sm={1}></Col>
-            <Col componentClass={ControlLabel} sm={1}>Description</Col>
+            <Col componentClass={ControlLabel} sm={1}>Description*</Col>
             <Col sm={9}>
               <FormControl componentClass="textarea" name="listingDescription" id="listingDescription" cols="80"
                           maxlength="4096" rows="24" required
