@@ -70,13 +70,21 @@ An app for viewing and posting classified listings, for Hack Reactor members onl
    $ npm start
    ```
 
-6. Seed the database tables with sample data set (seed file located at -/hackifieds/db/seed.js)
+6. Seed the database tables with sample data set (seed file located at -/hackifieds/db/seed.js):
 
    ```bash
    $ node seed.js
    ```
 
-7. Navigate to http:/127.0.0.1:3000 in a browser to access the client app.
+7. Load your github API Key ID and Secret:
+
+   ```bash
+   $ cp hackifieds/server/auth/github_oauth_sample.js hackifieds/server/auth/github_oauth.js
+   ```
+
+   Replace `your_id` and `your_secret` in github_oauth.js with your github API Key ID and secret.
+
+8. Navigate to http:/127.0.0.1:3000 in a browser to access the client app.
 
 ## Architecture
 
