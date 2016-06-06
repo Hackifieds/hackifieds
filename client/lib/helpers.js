@@ -20,12 +20,13 @@ let getListings = (category, callback) => {
   });
 };
 
-let postListing = (listing, callback) => {
+let postListing = (formData, callback) => {
   $.ajax({
     url: '/api/listings',
     method: 'POST',
-    contentType: 'application/json',
-    data: JSON.stringify(listing),
+    contentType: false,
+    processData: false,
+    data: formData,
     success: data => callback(data),
     error: err => console.log( 'Error sending listing to server.', err)
   });

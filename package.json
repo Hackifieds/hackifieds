@@ -22,6 +22,7 @@
     "express-session": "^1.13.0",
     "jquery": "^2.2.4",
     "morgan": "^1.7.0",
+    "multer": "^1.1.0",
     "mysql": "^2.10.2",
     "passport": "^0.3.2",
     "passport-github2": "^0.1.10",
@@ -30,7 +31,8 @@
     "react-dom": "^15.1.0",
     "react-router": "^2.4.1",
     "require": "^2.4.20",
-    "sequelize": "^3.23.3"
+    "sequelize": "^3.23.3",
+    "underscore": "^1.8.3"
   },
   "repository": {
     "type": "git",
