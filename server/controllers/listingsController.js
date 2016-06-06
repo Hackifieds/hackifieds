@@ -13,7 +13,8 @@ exports.getAll = function(category, callback) {
     {
       model: db.User,
       attributes: ['username', 'phone', 'email']
-    }]
+    }],
+    order: 'createdAt DESC'
   })
     .then(function(listings) {
       callback(200, listings);

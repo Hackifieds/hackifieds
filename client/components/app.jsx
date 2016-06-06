@@ -19,7 +19,7 @@ class App extends React.Component {
       listings: [],
       navCategory: 'Rent',  //Default listings category to show
       activeFilter: 'All',  //Default filter to show All
-      activeListing: parseInt(window.localStorage.getItem('activeListing')) || null,  //Default to not show Listing Info component
+      activeListing: parseInt(window.localStorage.getItem('activeListing')) || null, //If activeListing exists in localStorage, set state to that listing
       currentUser: {},
       currentView: 'listingsView'
     };
@@ -27,15 +27,11 @@ class App extends React.Component {
 
   componentWillMount () {
     helpers.userAuth((user) => this.setSession(user));
-    
     globalVar.callback = user => {
       user = user || {};
       this.setState({currentUser: user})
       this.setSession(user);
     };
-    console.log('listings:', this.state.listings);
-    console.log('activeListing:', this.state.activeListing);
-    // helpers.userAuth((user) => this.setSession(user));
     this.retrieveCategories();
     this.retrieveListings(this.state.navCategory);
   }
@@ -66,14 +62,14 @@ class App extends React.Component {
   }
 
   handleListingEntryClick (event) {
-    //Set the current activeListing
+    //Store the clicked listing in browser localStorage & set the current activeListing state
     let activeListing = Number(event.currentTarget.id);
     window.localStorage.setItem('activeListing', JSON.stringify(activeListing));
     this.setState({activeListing: activeListing});
   }
 
   handleListingInfoClick (event) {
-    //Set the current activeListing to null / close the Listing Info component
+    //Clear localStorage & set the current activeListing to null / close the Listing Info component
     window.localStorage.setItem('activeListing', null);
     this.setState({activeListing: null});
   }
