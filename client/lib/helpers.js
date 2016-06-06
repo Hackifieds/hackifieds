@@ -42,7 +42,7 @@ let userAuth = callback => {
 
 let logout = callback => {
   $.ajax({
-    url: '/logout',
+    url: '/api/logout',
     method: 'GET',
     success: data => callback(data),
     error: err => console.log( 'Error logging out.', err)
