@@ -5,7 +5,7 @@ import helper from '../lib/helpers';
 const ListingEntry = props => (
   <div className='listing-entry'>
     <Grid>
-      <Row id={props.listing.listingId} onClick = {props.handleListingEntryClick} >
+      <Row id={props.listing.listingId} onClick={props.handleListingEntryClick}>
         <Col xs={1} md={1} lg={1}>
           <span className="listing-entry-date">{helper.dateFormatter(props.listing.createdAt)}</span>
         </Col>
