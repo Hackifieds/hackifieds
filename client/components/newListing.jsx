@@ -86,7 +86,7 @@ class NewListing extends React.Component {
                 <FormControl type="text" name="listingLocation" id="listingLocation" required
                              pattern='/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/'
                              placeholder="Enter your contact number here"
-                             onChange={ e => this.setListingField('location', e.target.value) }/>
+                             onChange={ e => this.setListingField('telephone', e.target.value) }/>
               </Col>
               <Col sm={2}></Col>
               <Col componentClass={ControlLabel} sm={1}>Email</Col>
@@ -121,7 +121,7 @@ class NewListing extends React.Component {
             </Row>
           </FormGroup>
         
-          <FormGroup>
+          <FormGroup inline>
             <Row>
               <Col sm={1}></Col>
               <Col componentClass={ControlLabel} sm={1}>Description</Col>
@@ -135,16 +135,32 @@ class NewListing extends React.Component {
             </Row>
           </FormGroup>
 
-          <FormGroup>
-            <ControlLabel>File</ControlLabel>
-            <FormControl type="file" />
-            <HelpBlock>Do we need some help block text here?</HelpBlock>
+          <FormGroup inline>
+            <Row>
+              <Col sm={1}></Col>
+              <Col componentClass={ControlLabel} sm={1}>File</Col>
+              <Col sm={9}>
+                <FormControl type="file" />
+              </Col>
+            </Row>
+            <Row>
+              <Col sm={2}></Col>
+              <Col sm={9}>
+                <HelpBlock>Upload images to be displayed in your posting</HelpBlock>
+              </Col>
+              <Col sm={1}></Col>
+            </Row>
           </FormGroup>
 
-          <Button type="submit" onClick={ () => this.submitHandler() }>
-            Post My Listing
-          </Button>
-
+          <Row>
+              <Col sm={2}></Col>
+              <Col sm={1}>
+                <Button type="submit" onClick={ () => this.submitHandler() }>
+                  Post My Listing
+                </Button>
+              </Col>
+              <Col sm={10}></Col>
+          </Row>
         </form>
     );
   }
