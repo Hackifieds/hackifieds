@@ -56,30 +56,34 @@ class App extends React.Component {
   }
 
   handleNavClick (value) {
-    this.setState({ currentView: 'listingsView', navCategory: value, activeFilter: 'All' });
+    this.setState({currentView: 'listingsView', navCategory: value, activeFilter: 'All'});
     this.retrieveListings(value);
   }
 
   handleFilterItemClick (event) {
     //Set the current activeFilter value
-    this.setState({ activeFilter: event.currentTarget.id });
+    this.setState({activeFilter: event.currentTarget.id});
   }
 
   handleListingEntryClick (event) {
     //Set the current activeListing
     let activeListing = Number(event.currentTarget.id);
     window.localStorage.setItem('activeListing', JSON.stringify(activeListing));
-    this.setState({ activeListing: activeListing });
+    this.setState({activeListing: activeListing});
   }
 
   handleListingInfoClick (event) {
     //Set the current activeListing to null / close the Listing Info component
     window.localStorage.setItem('activeListing', null);
-    this.setState({ activeListing: null });
+    this.setState({activeListing: null});
+  }
+
+  handleNewListingClick (event) {
+    this.setState({currentView: 'newListingView'});
   }
 
   setSession (user) {
-    this.setState({ currentUser: user });
+    this.setState({currentUser: user});
   }
 
   logOut () {
@@ -89,6 +93,7 @@ class App extends React.Component {
   render () {
     let viewLogic;
     let loginLogic;
+    let newListingLogic;
 
     if ( this.state.currentView === 'listingsView' ) {
       viewLogic =
@@ -121,16 +126,18 @@ class App extends React.Component {
     if (Object.keys(this.state.currentUser).length === 0) {
       loginLogic =
         <a href="/auth/github">Login with GitHub</a>;
+      newListingLogic =
+        <a href="/auth/github">Create New Listing</a>;
     } else {
       loginLogic =
-        <a href='/' onClick={this.logOut.bind(this)}>Logout</a>;
+        <a href="/" onClick={this.logOut.bind(this)}>Logout</a>;
+      newListingLogic =
+        <a href="javascript:void(0);" onClick={this.handleNewListingClick.bind(this)}>Create New Listing</a>;
     }
 
     return (
       <div className="app">
-        <input type="button"
-               value="Create New Listing"
-               onClick={ () => this.setState({currentView: 'newListingView'}) }/>
+        {newListingLogic}
         {loginLogic}
         <Nav handleNavClick={this.handleNavClick.bind(this)}/>
         <Grid>
