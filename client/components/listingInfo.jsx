@@ -6,7 +6,7 @@ const ListingInfo = props => {
 
   if (Object.keys(props.user).length === 0) {
     contactLogic =
-      <a href='/auth/github'>Contact</a>;
+      <Button href='/auth/github'>Contact</Button>;
   } else {
     contactLogic =
       <div>
@@ -29,38 +29,41 @@ const ListingInfo = props => {
         </Modal.Header>
 
         <Modal.Body>
-            <div>
-              <span className="listing-info-date"> List Date: </span>
-              <span> {helper.dateFormatter(props.listing.createdAt)} </span>
-            </div>
-            <div>
-              <span className="listing-info-location"> Location: </span>
-              <span> {props.listing.location} </span>
-            </div>
-            <div>
-              <span className="listing-info-price"> Price: </span>
-              <span> ${props.listing.price} </span>
-            </div>
-            <div>
-              <span className="listing-info-start-date"> Start Date: </span>
-              <span> {helper.dateFormatter(props.listing.startDate)} </span>
-            </div>
-            <div>
-              <span className="listing-info-end-date"> End Date: </span>
-              <span> {helper.dateFormatter(props.listing.endDate)} </span>
-            </div>
-            <div>
-              <span className="listing-info-description"> Description: </span>
-              <span> {props.listing.description} </span>
-            </div>
-          {contactLogic}
+          <div>
+            <span className="listing-info-date"> List Date: </span>
+            <span> {helper.dateFormatter(props.listing.createdAt)} </span>
+          </div>
+          <div>
+            <span className="listing-info-location"> Location: </span>
+            <span> {props.listing.location} </span>
+          </div>
+          <div>
+            <span className="listing-info-price"> Price: </span>
+            <span> ${props.listing.price} </span>
+          </div>
+          <div>
+            <span className="listing-info-start-date"> Start Date: </span>
+            <span> {helper.dateFormatter(props.listing.startDate)} </span>
+          </div>
+          <div>
+            <span className="listing-info-end-date"> End Date: </span>
+            <span> {helper.dateFormatter(props.listing.endDate)} </span>
+          </div>
+          <div>
+            <span className="listing-info-description"> Description: </span>
+            <span> {props.listing.description} </span>
+          </div>
           <div>{props.listing.Images.map(image =>
             <div className="listing-image">
               <img src={image.path}/>
-            </div>)}</div>
+            </div>)}
+          </div>
         </Modal.Body>
 
         <Modal.Footer>
+          <div className="contact">
+            {contactLogic}
+          </div>
           <Button onClick={props.handleListingInfoClick}>Close</Button>
         </Modal.Footer>
 

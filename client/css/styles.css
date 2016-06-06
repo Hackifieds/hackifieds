@@ -98,9 +98,21 @@ nav li {
 /* Images */
 .listing-image {
   max-width: 100px;
+  float: left;
+  padding-right: 10px;
 }
 
 .listing-image img {
   max-width: 100%;
   max-height: 100%;
+}
+
+/* Contact */
+.contact {
+  float: left;
+}
+
+/* Modal */
+.modal-body {
+  /*height: 600px;*/
 }
