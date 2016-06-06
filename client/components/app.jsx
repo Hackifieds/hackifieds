@@ -4,7 +4,7 @@ import Listings from './listings.jsx';
 import ListingInfo from './listingInfo.jsx';
 import NewListing from './newListing.jsx';
 import helpers from '../lib/helpers.js';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col, ButtonToolbar } from 'react-bootstrap';
 
 
 class App extends React.Component {
@@ -125,20 +125,22 @@ class App extends React.Component {
 
     if (Object.keys(this.state.currentUser).length === 0) {
       loginLogic =
-        <a href="/auth/github">Login with GitHub</a>;
+        <a className="btn top-btn" href="/auth/github">Login with GitHub</a>;
       newListingLogic =
-        <a href="/auth/github" onClick={this.handleNewListingClick.bind(this)}>Post a Listing</a>;
+        <a className="btn top-btn"href="/auth/github" onClick={this.handleNewListingClick.bind(this)}>Post A Listing</a>;
     } else {
       loginLogic =
-        <a href="/" onClick={this.logOut.bind(this)}>Logout</a>;
+        <a className="btn top-btn" href="/" onClick={this.logOut.bind(this)}>Logout</a>;
       newListingLogic =
-        <a href="javascript:void(0);" onClick={this.handleNewListingClick.bind(this)}>Post a Listing</a>;
+        <a className="btn top-btn"href="javascript:void(0);" onClick={this.handleNewListingClick.bind(this)}>Post A Listing</a>;
     }
 
     return (
       <div className="app">
-        {newListingLogic}
-        {loginLogic}
+        <ButtonToolbar>
+          {newListingLogic}
+          {loginLogic}
+        </ButtonToolbar>
         <Nav handleNavClick={this.handleNavClick.bind(this)}/>
         <Grid>
           {viewLogic}
