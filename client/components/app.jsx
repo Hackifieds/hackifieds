@@ -9,7 +9,6 @@ import { Grid, Row, Col } from 'react-bootstrap';
 
 class App extends React.Component {
 
-
   constructor (props) {
     super(props);
 
@@ -21,7 +20,7 @@ class App extends React.Component {
       activeFilter: 'All',  //Default filter to show All
       activeListing: parseInt(window.localStorage.getItem('activeListing')) || null, //If activeListing exists in localStorage, set state to that listing
       currentUser: {},
-      currentView: 'listingsView'
+      currentView: window.localStorage.getItem('currentView') || 'listingsView'
     };
   }
 
@@ -53,6 +52,7 @@ class App extends React.Component {
 
   handleNavClick (value) {
     this.setState({currentView: 'listingsView', navCategory: value, activeFilter: 'All'});
+    window.localStorage.setItem('currentView', 'listingsView');
     this.retrieveListings(value);
   }
 
@@ -75,6 +75,7 @@ class App extends React.Component {
   }
 
   handleNewListingClick (event) {
+    window.localStorage.setItem('currentView', 'newListingView');
     this.setState({currentView: 'newListingView'});
   }
 
@@ -83,6 +84,8 @@ class App extends React.Component {
   }
 
   logOut () {
+    window.localStorage.setItem('currentView', 'listingsView');
+    this.setState({currentView: 'listingsView'});
     helpers.logout( data => this.setState({ currentUser: {} }));
   }
 
@@ -107,7 +110,8 @@ class App extends React.Component {
                       user={this.state.currentUser}/>
           </Col>
         </Row>;
-    } else if (this.state.currentView === 'newListingView' ) {
+    } else if ( (Object.keys(this.state.currentUser).length !== 0)
+               && (this.state.currentView === 'newListingView') ) {
       viewLogic =
         <Row className="show-grid">
           <Col xs={12} md={12} lg={12}>
@@ -123,7 +127,7 @@ class App extends React.Component {
       loginLogic =
         <a href="/auth/github">Login with GitHub</a>;
       newListingLogic =
-        <a href="/auth/github">Create New Listing</a>;
+        <a href="/auth/github" onClick={this.handleNewListingClick.bind(this)}>Create New Listing</a>;
     } else {
       loginLogic =
         <a href="/" onClick={this.logOut.bind(this)}>Logout</a>;
