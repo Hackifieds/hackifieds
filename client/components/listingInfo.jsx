@@ -10,8 +10,14 @@ const ListingInfo = props => {
   } else {
     contactLogic =
       <div>
-        <div className="listing-info-email"> Email: {props.listing.User.email} </div>
-        <div className="listing-info-telphone"> Telephone: {props.listing.User.phone} </div>
+        <div>
+          <span className="listing-info-email" type='email'> Email: </span>
+          <a href={'mailto:' + props.listing.User.email}> {props.listing.User.email} </a>
+        </div>
+        <div>
+          <span className="listing-info-telphone"> Telephone: </span>
+          <a href={'tel:+' + props.listing.User.phone}> {props.listing.User.phone} </a>
+        </div>
       </div>;
   }
 
@@ -23,12 +29,30 @@ const ListingInfo = props => {
         </Modal.Header>
 
         <Modal.Body>
-          <div className="listing-info-date"> List Date: {helper.dateFormatter(props.listing.createdAt)} </div>
-          <div className="listing-info-location"> Location: {props.listing.location} </div>
-          <div className="listing-info-price"> Price: ${props.listing.price} </div>
-          <div className="listing-info-start-date"> Start Date: {helper.dateFormatter(props.listing.startDate)} </div>
-          <div className="listing-info-end-date"> End Date: {helper.dateFormatter(props.listing.endDate)} </div>
-          <div className="listing-info-description"> Description: {props.listing.description} </div>
+            <div>
+              <span className="listing-info-date"> List Date: </span>
+              <span> {helper.dateFormatter(props.listing.createdAt)} </span>
+            </div>
+            <div>
+              <span className="listing-info-location"> Location: </span>
+              <span> {props.listing.location} </span>
+            </div>
+            <div>
+              <span className="listing-info-price"> Price: </span>
+              <span> ${props.listing.price} </span>
+            </div>
+            <div>
+              <span className="listing-info-start-date"> Start Date: </span>
+              <span> {helper.dateFormatter(props.listing.startDate)} </span>
+            </div>
+            <div>
+              <span className="listing-info-end-date"> End Date: </span>
+              <span> {helper.dateFormatter(props.listing.endDate)} </span>
+            </div>
+            <div>
+              <span className="listing-info-description"> Description: </span>
+              <span> {props.listing.description} </span>
+            </div>
           {contactLogic}
         </Modal.Body>
 
