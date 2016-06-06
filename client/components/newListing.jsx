@@ -53,34 +53,48 @@ class NewListing extends React.Component {
                                 value={cat.categoryName}>{cat.categoryName}</option> ) }
                 </FormControl>
               </Col>
-              <Col sm={2}></Col>
-              <Col componentClass={ControlLabel} sm={1}>Email</Col>
-              <Col sm={3}>
-                <FormControl type="email" placeholder="Enter email" disabled/>
-              </Col>
-            <Col sm={1}></Col>
+              <Col sm={7}></Col>
             </Row>
           </FormGroup>
 
           <FormGroup inline>
-          <Row>
-            <Col sm={1}></Col>
-            <Col componentClass={ControlLabel} sm={1}>Location</Col>
-            <Col sm={3}>
-              <FormControl type="text" name="listingLocation" id="listingLocation" required
-                           size="48" maxlength="48"
-                           placeholder="Enter the location of your listing here"
-                           onChange={ e => this.setListingField('location', e.target.value) }/>
-            </Col>
-            <Col sm={2}></Col>
-            <Col componentClass={ControlLabel} sm={1}>Price</Col>
-            <Col sm={3}>
-              <FormControl type="number" name="listingPrice" id="listingPrice"
-                           placeholder="0"
-                           onChange={ e => this.setListingField('price', e.target.value) }/>
-            </Col> 
-            <Col sm={1}></Col>
+            <Row>
+              <Col sm={1}></Col>
+              <Col componentClass={ControlLabel} sm={1}>Location</Col>
+              <Col sm={3}>
+                <FormControl type="text" name="listingLocation" id="listingLocation" required
+                             size="48" maxlength="48"
+                             placeholder="Enter the location of your listing here"
+                             onChange={ e => this.setListingField('location', e.target.value) }/>
+              </Col>
+              <Col sm={2}></Col>
+              <Col componentClass={ControlLabel} sm={1}>Price</Col>
+              <Col sm={3}>
+                <FormControl type="number" name="listingPrice" id="listingPrice"
+                             placeholder="0"
+                             onChange={ e => this.setListingField('price', e.target.value) }/>
+              </Col> 
+              <Col sm={1}></Col>
           </Row>
+          </FormGroup>
+
+          <FormGroup inline>
+            <Row>
+              <Col sm={1}></Col>
+              <Col componentClass={ControlLabel} sm={1}>Telephone</Col>
+              <Col sm={3}>
+                <FormControl type="text" name="listingLocation" id="listingLocation" required
+                             pattern='/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/'
+                             placeholder="Enter your contact number here"
+                             onChange={ e => this.setListingField('location', e.target.value) }/>
+              </Col>
+              <Col sm={2}></Col>
+              <Col componentClass={ControlLabel} sm={1}>Email</Col>
+              <Col sm={3}>
+                <FormControl type="email" placeholder="Email address per Github" disabled/>
+              </Col>
+              <Col sm={1}></Col>
+            </Row>
           </FormGroup>
         
           <FormGroup inline>
