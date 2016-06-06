@@ -127,12 +127,12 @@ class App extends React.Component {
       loginLogic =
         <a href="/auth/github">Login with GitHub</a>;
       newListingLogic =
-        <a href="/auth/github" onClick={this.handleNewListingClick.bind(this)}>Create New Listing</a>;
+        <a href="/auth/github" onClick={this.handleNewListingClick.bind(this)}>Post a Listing</a>;
     } else {
       loginLogic =
         <a href="/" onClick={this.logOut.bind(this)}>Logout</a>;
       newListingLogic =
-        <a href="javascript:void(0);" onClick={this.handleNewListingClick.bind(this)}>Create New Listing</a>;
+        <a href="javascript:void(0);" onClick={this.handleNewListingClick.bind(this)}>Post a Listing</a>;
     }
 
     return (
