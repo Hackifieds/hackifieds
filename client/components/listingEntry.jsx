@@ -5,7 +5,7 @@ import helper from '../lib/helpers';
 const ListingEntry = props => (
   <div className='listing-entry'>
     <Grid>
-      <Row>
+      <Row id={props.listing.listingId} onClick = {props.handleListingEntryClick} >
         <Col xs={1} md={1} lg={1}>
           <span className="listing-entry-date">{helper.dateFormatter(props.listing.createdAt)}</span>
         </Col>
@@ -16,7 +16,7 @@ const ListingEntry = props => (
           <span className="listing-entry-location">{props.listing.location}</span>
         </Col>
         <Col xs={5} md={5} lg={5}>
-          <span className="listing-entry-title" id={props.listing.listingId} onClick={props.handleListingEntryClick}>{props.listing.title}</span>
+          <span className="listing-entry">{props.listing.title}</span>
         </Col>
       </Row>
     </Grid>
@@ -24,3 +24,4 @@ const ListingEntry = props => (
 );
 
 export default ListingEntry;
+
