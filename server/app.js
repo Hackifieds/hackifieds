@@ -88,19 +88,13 @@ app.route('/api/categories')
       res.status(statusCode).send(results);
     });
   });
-app.route('/api/users')
-  .get(function(req, res) {
-    usersController.getAll(function(statusCode, results) {
-      res.status(statusCode).send(results);
-    });
-  });
 app.route('/api/auth')
   .get(function(req, res) {
     console.log('Req session before', req.session);
     res.send(req.user);
   });
 
-app.get('/logout', function(req, res) {
+app.get('/api/logout', function(req, res) {
   req.session.destroy(function() {
     console.log( req.session);
     res.redirect('/');
