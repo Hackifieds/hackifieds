@@ -43,8 +43,18 @@ class App extends React.Component {
     helpers.getListings( category, data => this.setState({listings: data}) );
   }
 
-  sendListing (newListing) {
-    helpers.postListing(newListing, data => {
+  sendListing (newListing, images) {
+    var formData = new FormData();
+    formData.append('title', newListing.title);
+    formData.append('location', newListing.location);
+    formData.append('price', newListing.price);
+    formData.append('description', newListing.description);
+    formData.append('userId', newListing.userId);
+    formData.append('categoryId', newListing.categoryId);
+    _.each(images, function(file) {
+      formData.append('images', file);
+    });
+    helpers.postListing(formData, data => {
       let newCategory = this.state.categories.filter(cat => cat.categoryId === newListing.categoryId);
       this.handleNavClick(newCategory[0].categoryName);
     });

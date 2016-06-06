@@ -5,12 +5,14 @@ var passport = require('passport');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var GitHubStrategy = require('passport-github2').Strategy;
+var multer = require('multer');
 
 // custom dependencies
 var db = require('../db/db');
 var listingsCtrl = require('./controllers/listingsController');
 var categoriesController = require('./controllers/categoriesController');
 var github = require('./auth/github_oauth');
+var upload = multer({dest: 'uploads/'});
 
 // passport session setup
 passport.serializeUser(function(user, done) {
@@ -34,6 +36,8 @@ app.use ('/scripts', express.static(__dirname + '/../node_modules/bootstrap/dist
 app.use ('/scripts', express.static(__dirname + '/../node_modules/jquery/dist/'));
 app.use ('/scripts', express.static(__dirname + '/../node_modules/react/dist/'));
 app.use ('/scripts', express.static(__dirname + '/../node_modules/react-dom/dist/'));
+app.use ('/scripts', express.static(__dirname + '/../node_modules/underscore/'));
+app.use ('/uploads', express.static(__dirname + '/../uploads/'));
 
 // configure passport github oAuth strategy
 passport.use(new GitHubStrategy({
@@ -77,8 +81,8 @@ app.route('/api/listings')
       res.status(statusCode).send(results);
     });
   })
-  .post(function(req, res) {
-    listingsCtrl.addOne(req.body, function(statusCode, results) {
+  .post(upload.array('images', 12), function(req, res) {
+    listingsCtrl.addOne(req.body, req.files, function(statusCode, results) {
       res.status(statusCode).send(results);
     });
   });
