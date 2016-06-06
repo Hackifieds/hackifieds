@@ -54,6 +54,10 @@ const ListingInfo = props => {
               <span> {props.listing.description} </span>
             </div>
           {contactLogic}
+          <div>{props.listing.Images.map(image =>
+            <div className="listing-image">
+              <img src={image.path}/>
+            </div>)}</div>
         </Modal.Body>
 
         <Modal.Footer>

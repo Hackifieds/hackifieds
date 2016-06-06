@@ -42,11 +42,19 @@ var Listing = db.define('Listing', {
   endDate: { type: Sequelize.DATE }
 });
 
+// Image model
+var Image = db.define('Image', {
+  imageId: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
+  path: { type: Sequelize.TEXT, allowNull: false }
+});
+
 // define foreign key relationships
 User.hasMany(Listing, { foreignKey: { name: 'userId', allowNull: false } });
 Listing.belongsTo(User, { foreignKey: { name: 'userId', allowNull: false } });
 Category.hasMany(Listing, { foreignKey: { name: 'categoryId', allowNull: false } });
 Listing.belongsTo(Category, { foreignKey: { name: 'categoryId', allowNull: false } });
+Listing.hasMany(Image, { foreignKey: { name: 'listingId', allowNull: false } });
+Image.belongsTo(Listing, { foreignKey: { name: 'listingId', allowNull: false } });
 
 // Sync database
 User.sync()
@@ -73,6 +81,14 @@ Listing.sync()
     console.log( 'Unable to create/fetch Listings table: ' + err );
   });
 
+Image.sync()
+  .then( function () {
+    console.log( 'Created (or fetched existing) Images table.' );
+  })
+  .catch( function (err) {
+    console.log( 'Unable to create/fetch Images table: ' + err );
+  });
+
 db.sync()
 // db.sync( { force: true } ) // use this line instead of above to overwrite with new schemas
   .then( function () {
@@ -85,4 +101,5 @@ db.sync()
 exports.User = User;
 exports.Category = Category;
 exports.Listing = Listing;
+exports.Image = Image;
 

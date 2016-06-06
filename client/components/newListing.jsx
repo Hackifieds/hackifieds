@@ -25,7 +25,6 @@ class NewListing extends React.Component {
       this.newListing.categoryId = currentCat[0].categoryId;
     }
     this.newListing.userId = this.props.user.userId;
-    console.log('New listing', this.newListing);
     this.props.clickHandler(this.newListing, this.images);
   }
 

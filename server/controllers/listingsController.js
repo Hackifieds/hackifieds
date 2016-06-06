@@ -1,4 +1,5 @@
 var db = require('../../db/db');
+var _ = require('underscore');
 
 //Controller method - retrieve joined listing/user/category fields from DB
 exports.getAll = function(category, callback) {
@@ -13,6 +14,10 @@ exports.getAll = function(category, callback) {
     {
       model: db.User,
       attributes: ['username', 'phone', 'email']
+    },
+    {
+      model: db.Image,
+      attributes: ['path']
     }],
     order: 'createdAt DESC'
   })
@@ -26,9 +31,24 @@ exports.getAll = function(category, callback) {
 };
 
 //Controller method - add a listings to DB
-exports.addOne = function(listing, callback) {
+exports.addOne = function(listing, images, callback) {
   db.Listing.create(listing)
     .then(function(listing) {
+      if (images.length > 0) {
+        _.each(images, function(image) {
+          var img = {
+            path: 'uploads/' + image.filename,
+            listingId: listing.listingId
+          };
+          db.Image.create(img)
+            .then(function(image) {
+              console.log('Image upload successful');
+            })
+            .catch(function(error) {
+              console.error(error);
+            });
+        });
+      }
       callback(201, listing);
     })
     .catch(function(error) {

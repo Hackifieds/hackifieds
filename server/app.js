@@ -37,6 +37,7 @@ app.use ('/scripts', express.static(__dirname + '/../node_modules/jquery/dist/')
 app.use ('/scripts', express.static(__dirname + '/../node_modules/react/dist/'));
 app.use ('/scripts', express.static(__dirname + '/../node_modules/react-dom/dist/'));
 app.use ('/scripts', express.static(__dirname + '/../node_modules/underscore/'));
+app.use ('/uploads', express.static(__dirname + '/../uploads/'));
 
 // configure passport github oAuth strategy
 passport.use(new GitHubStrategy({
@@ -81,9 +82,7 @@ app.route('/api/listings')
     });
   })
   .post(upload.array('images', 12), function(req, res) {
-    console.log('files', req.files);
-    console.log('body', req.body);
-    listingsCtrl.addOne(req.body, function(statusCode, results) {
+    listingsCtrl.addOne(req.body, req.files, function(statusCode, results) {
       res.status(statusCode).send(results);
     });
   });

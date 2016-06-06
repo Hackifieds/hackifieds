@@ -95,3 +95,12 @@ nav li {
   border-radius: 4px;
 }
 
+/* Images */
+.listing-image {
+  max-width: 100px;
+}
+
+.listing-image img {
+  max-width: 100%;
+  max-height: 100%;
+}
