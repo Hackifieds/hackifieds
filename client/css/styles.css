@@ -1,8 +1,8 @@
 body {
-  background-image: url("../assets/pexels-photo-96858.jpeg");
+  background: url("../assets/pexels-photo-96858.jpeg") no-repeat bottom center fixed;
   background-size: cover;
   padding-top: 10%;
-  color: black;
+  color: white;
 }
 
 .header {
@@ -14,7 +14,7 @@ body {
 
 .heading {
   font-size: 80px;
-  color: black;
+  color: white;
   margin-right: 0px;
 }
 
@@ -33,21 +33,21 @@ body {
 
 .navbar {
   font-size: 20px;
-  color: black;
+  color: white;
   left: 525px;
-  top: 500;
+  top: 0px;
 }
 
 .nav-rent {
-  color: black;
+  color: white;
 }
 
 .nav-buy {
-  color: black;
+  color: white;
 }
 
 .nav-hack {
-  color: black;
+  color: white;
 }
 
 .filter {
@@ -107,15 +107,20 @@ body {
 
 /* Modal */
 .modal-body {
-    /* 100% = dialog height, 120px = header + footer */
-    max-height: calc(100% - 120px);
-    overflow-y: scroll;
+  /* 100% = dialog height, 120px = header + footer */
+  max-height: calc(100% - 120px);
+  overflow-y: scroll;
+  color: black;
+}
+
+.modal-title {
+  color: black;
 }
 
 .top-btn {
-  color: black;
+  color: white;
   font-weight: bold;
-  border: solid 2px black;
+  border: solid 2px white;
   border-radius: 4px;
 }
 
