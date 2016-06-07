@@ -7,7 +7,7 @@ body {
 
 .header {
   position: fixed;
-  top: 20px;
+  top: 50px;
   left: 450px;
   text-align: -webkit-right;
 }
@@ -129,3 +129,10 @@ body {
   background-color: #d9edf7;
 }
 
+.listing-info-email {
+  color: black;
+}
+
+.listing-info-telphone {
+  color: black;
+}
