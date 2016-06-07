@@ -113,11 +113,12 @@ class App extends React.Component {
     if ( this.state.currentView === 'listingsView' ) {
       viewLogic =
         <Row className="show-grid">
+          <Col xs={1} md={1} lg={1}></Col>
           <Col xs={2} md={2} lg={2}>
             <Filter handleFilterItemClick={this.handleFilterItemClick.bind(this)}
                     listings={this.state.listings}/>
           </Col>
-          <Col xs={10} md={10} lg={10}>
+          <Col xs={9} md={9} lg={9}>
             <Listings handleListingEntryClick={this.handleListingEntryClick.bind(this)}
                       handleListingInfoClick={this.handleListingInfoClick.bind(this)}
                       activeFilter={this.state.activeFilter}
