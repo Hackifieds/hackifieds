@@ -94,7 +94,7 @@ class App extends React.Component {
   }
 
   logOut () {
-    window.localStorage.setItem('currentView', 'listingsView');
+    window.localStorage.clear();
     this.setState({currentView: 'listingsView'});
     helpers.logout( data => this.setState({ currentUser: {} }));
   }

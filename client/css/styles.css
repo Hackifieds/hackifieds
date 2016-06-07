@@ -51,7 +51,6 @@ nav li {
 .filter-item:hover {
   color: #31708f;
   background-color: #d9edf7;
-  border-color: #bce8f1;
 }
 
 .filter-count {
@@ -69,21 +68,8 @@ nav li {
 .listing-entry:hover {
   color: #31708f;
   background-color: #d9edf7;
-  border-color: #bce8f1;
 }
 
-/*.listing-entry-start-date {
-  width: 5%;
-}
-.listing-entry-end-date {
-  width: 5%;
-}
-.listing-entry-price {
-  width: 5%;
-}
-.listing-entry-location {
-  width: 5%;  
-}*/
 .listing-entry-title {
   text-decoration: underline;
 }
@@ -95,6 +81,10 @@ nav li {
   border-radius: 4px;
 }
 
+.top-btn:hover {
+  color: #31708f;
+  background-color: #d9edf7;
+}
 /* Images */
 .listing-image {
   max-width: 100px;
