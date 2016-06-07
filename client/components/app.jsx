@@ -89,6 +89,12 @@ class App extends React.Component {
     this.setState({currentView: 'newListingView'});
   }
 
+  handleNewListingClose (event) {
+    window.localStorage.clear();
+    console.log('clear');
+    this.setState({currentView: 'listingsView'});
+  }
+
   setSession (user) {
     this.setState({currentUser: user});
   }
@@ -128,7 +134,8 @@ class App extends React.Component {
             <NewListing categories={this.state.categories}
                         navCategory={this.state.navCategory}
                         user={this.state.currentUser}
-                        clickHandler={this.sendListing.bind(this)}/>
+                        clickHandler={this.sendListing.bind(this)}
+                        handleNewListingClose={this.handleNewListingClose.bind(this)}/>
           </Col>
         </Row>;
     }

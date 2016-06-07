@@ -70,7 +70,7 @@ class NewListing extends React.Component {
                   <Col sm={3}>
                     <FormControl type="text" name="listingLocation" id="listingLocation" required
                                  size="48" maxlength="48"
-                                 placeholder="Enter the location of your listing here"
+                                 placeholder="Enter your location"
                                  onChange={ e => this.setListingField('location', e.target.value) }/>
                   </Col>
                   <Col componentClass={ControlLabel} sm={2}>Price</Col>
@@ -163,7 +163,7 @@ class NewListing extends React.Component {
                     <Button type="submit" onClick={ () => this.submitHandler() }>
                       Post My Listing
                     </Button>
-                    <Button>Close</Button>
+                    <Button onClick={ this.props.handleNewListingClose }>Close</Button>
                   </Col>
                   <Col sm={6}></Col>
                 </Row>
