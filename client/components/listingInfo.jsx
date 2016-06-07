@@ -25,7 +25,7 @@ const ListingInfo = props => {
     <div className="static-modal">
       <Modal.Dialog>
         <Modal.Header>
-          <Modal.Title>{props.listing.title}</Modal.Title>
+          <Modal.Title><span className="modal-title">{props.listing.title}</span></Modal.Title>
         </Modal.Header>
 
         <Modal.Body>

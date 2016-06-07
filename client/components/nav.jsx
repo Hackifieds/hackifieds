@@ -1,14 +1,13 @@
 let Nav = ({handleNavClick}) => (
 
-  <div className="nav">
-    <nav>
-      <ul className="nav nav-pills nav-justified">
-        <li><a onClick={() => handleNavClick('Rent')}>Rent</a></li>
-        <li><a onClick={() => handleNavClick('Buy')}>Buy</a></li>
-        <li><a onClick={() => handleNavClick('Hack')}>Hack</a></li>
+  <div>
+      <ul className="navbar">
+        <a href="javascript:void(0);" className="nav-rent" onClick={() => handleNavClick('Rent')}>Rent  </a>
+        <a href="javascript:void(0);" className="nav-buy" onClick={() => handleNavClick('Buy')}>Buy  </a>
+        <a href="javascript:void(0);" className="nav-hack" onClick={() => handleNavClick('Hack')}>Hack  </a>
       </ul>
-    </nav>
   </div>
 );
 
 export default Nav;
+
